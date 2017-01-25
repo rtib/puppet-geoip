@@ -1,0 +1,28 @@
+---
+geoip::ensure: present
+geoip::packages:
+  - geoip-bin
+  - mmdb-bin
+  - geoipupdate
+geoip::package_ensure: latest
+geoip::config_path: '/etc/GeoIP.conf'
+geoip::config:
+  userid: 999999
+  licensekey: 000000000000
+  productids:
+    - GeoLite2-City
+    - GeoLite2-Country
+    - GeoLite-Legacy-IPv6-City
+    - GeoLite-Legacy-IPv6-Country
+    - 506
+    - 517
+    - 533
+#  database_directory:
+#  protocol:
+#  proxy:
+#  proxy_user_password:
+#  skip_hostname_verification:
+#  skip_peer_verification:
+geoip::manage_service: true
+geoip::service_name: 'geoip_update'
+geoip::update_path: '/usr/bin/geoipupdate'

@@ -1,0 +1,11 @@
+---
+version: 4
+datadir: data
+hierachy:
+  - name: "OperatingSystem"
+    backend: yaml
+    path: "%{::os.name}"
+
+  - name: common
+    backend: yaml
+    

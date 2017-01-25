@@ -1,0 +1,5 @@
+# Managed by puppet module geoip.
+# Do not edit!
+
+[Unit]
+Description=GeoIP update service
