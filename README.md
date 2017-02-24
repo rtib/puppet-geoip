@@ -14,44 +14,39 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+This Puppet module installs and maintains tools and processes to use GeoIP databases
+from MaxMind. These include the lookup tools geoiplookup and mmdb-lookup, and the 
+geoipupdate tool to update the databases. It will manage the configuration for the
+update tool which enables to set your subscription settings, product IDs and other
+settings, e.g. proxy settings. If systemd is available, a service is defined in order 
+to enable a seamless update process, which can be triggered at any time or scheduled
+by cron, a systemd timer unit, puppet or any other scheduler.
 
 ## Setup
 
-### What geoip affects **OPTIONAL**
+### What geoip affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+The module will install some packages, create a configuration file and a systemd
+service unit.
 
-If there's more that they should know about, though, this is the place to mention:
+### Setup Requirements
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+Neccesary packages must be available for installation by the package management tools
+used on the target system. As this is not the case on many systems, you have to take care
+about the availability of the packages. The list of the packages to be installed is a 
+configuration option.
 
 ### Beginning with geoip
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+The only thing to start with geoip is to include the class in the manifest of your nodes.
+
+```
+include ::geoip
+```
+
+All configuration parameter are assigned automatically, using Puppet 4's automatic parameter
+lookup feature. This enables the module to be configured fully over your hiera database. The
+default values are also lookuped up by hiera using the database shipped with the module.
 
 ## Usage
 
