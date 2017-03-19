@@ -61,7 +61,6 @@ class geoip (
   Boolean                   $manage_service,
   String                    $update_path,
   String                    $service_name,
-  String                    $update_path
 ) {
   class{ 'geoip::install': } ->
   class{ 'geoip::config': } ->

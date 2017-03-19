@@ -6,4 +6,4 @@ Description=GeoIP update service
 
 [Service]
 Type=oneshot
-ExecStart=<%= @geoip::config_path -%> -v <%= @geoip::config_path %>
+ExecStart=<%= $geoip::update_path -%> -v <%= $geoip::config_path %>
