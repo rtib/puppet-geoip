@@ -1,0 +1,11 @@
+---
+fixtures:
+  symlinks:
+    geoip: "#{source_dir}"
+  forge_modules:
+    'stdlib':
+      repo: 'puppetlabs/stdlib'
+    'concat':
+      repo: 'puppetlabs/concat'
+    'systemd':
+      repo: 'camptocamp-systemd'

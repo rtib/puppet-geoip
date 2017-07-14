@@ -6,7 +6,7 @@ class geoip::config {
   }
 
   file{ $geoip::config_path:
-    ensure => $cfg_ensure,
+    ensure  => $cfg_ensure,
     content => epp('geoip/GeoIP.conf.epp'),
     mode    => '0640',
     group   => 0,

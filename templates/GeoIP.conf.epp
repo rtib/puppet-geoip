@@ -54,12 +54,12 @@ ProxyUserPassword <%= $geoip::config['proxy_user_password'] %>
 # Defaults to "0".
 # SkipHostnameVerification 0
 <% if $geoip::config['skip_hostname_verification'] {-%>
-SkipHostnameVerification <%= $geoip::config['skip_hostname_verification'] %>
+SkipHostnameVerification <%= $geoip::config['skip_hostname_verification'] ? { true => '1', default => '0' } %>
 <%}-%>
 
 # Whether to skip peer verification on HTTPS connections.
 # Defaults to "0".
 # SkipPeerVerification 0
 <% if $geoip::config['skip_peer_verification'] {-%>
-SkipPeerVerification <%= $geoip::config['skip_peer_verification'] %>
+SkipPeerVerification <%= $geoip::config['skip_peer_verification'] ? { true => '1', default => '0' } %>
 <%}-%>
