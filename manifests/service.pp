@@ -1,12 +1,13 @@
 #
 class geoip::service {
   if $geoip::manage_service {
-    case $facts['service_provider'] {
+    $srv = $facts['service_provider']
+    case $srv {
       /systemd/: {
         include geoip::service::systemd
       } # systemd
       default: {
-        fail('unknown service provider.')
+        fail("unknown service provider (${srv}).")
       } # default
     } # case
   } # if

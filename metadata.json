@@ -9,19 +9,18 @@
   "issues_url": "https://github.com/rtib/puppet-geoip/issues",
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
+      "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.0.0 < 6.0.0"
     },
     {
-      "name": "puppetlabs-concat",
+      "name": "puppetlabs/concat",
       "version_requirement": ">= 4.0.0 < 6.0.0"
     },
     {
-      "name": "camptocamp-systemd",
+      "name": "camptocamp/systemd",
       "version_requirement": ">= 2.0.0 < 3.0.0"
     }
   ],
-  "data_provider": "hiera",
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
