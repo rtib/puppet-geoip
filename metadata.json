@@ -1,10 +1,10 @@
 {
-  "name": "tib-geoip",
+  "name": "trepasi-geoip",
   "version": "0.1.0",
   "author": "T. Repasi",
   "summary": "Install tools and update process for GeoIP database.",
   "license": "Apache-2.0",
-  "source": "https://github.com/rtib/puppt-geoip.git",
+  "source": "https://github.com/rtib/puppet-geoip.git",
   "project_page": "https://github.com/rtib/puppet-geoip",
   "issues_url": "https://github.com/rtib/puppet-geoip/issues",
   "dependencies": [
@@ -21,10 +21,13 @@
       "version_requirement": ">= 0.4.0 < 1.0.0"
     }
   ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": ["8"]
+      "operatingsystemrelease": [
+        "9"
+      ]
     }
   ],
   "requirements": [
@@ -33,5 +36,7 @@
       "version_requirement": ">=4.0.0 <6.0.0"
     }
   ],
-  "data_provider": "hiera"
+  "pdk-version": "1.7.1",
+  "template-url": "https://github.com/rtib/pdk-templates.git",
+  "template-ref": "heads/master-0-g05cc379"
 }

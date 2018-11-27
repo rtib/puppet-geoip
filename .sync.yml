@@ -1,0 +1,60 @@
+---
+  mock_with: ':rspec'
+  .travis.yml:
+    user: trepasi
+    secure: kz1gJ3sbwH9vyhmfqgW7KG8K2L1Zx+bYuOkCom68ljr2UQ5Wbpaomvkd7lAiJr1tfrDxJ9NacXTIfhpYmwD+bssWhTNrHHYRNFCAzc5aSJQLxZMEQrwz/KjQjj8ckSaSX9kEKAUYx61OezD78hHPb5mqRhfFkhl4S1fUaZ3J1a8yzybrFv3TGNalb1GboCWCP6kTUguBOVCMeylM1eIDDYNPKvYYzZVEQRqgAPRsxQJUn+nr2sglMyLLuO9S1ALFDRXWbxxfyCf5e/c5Oqfsed2UMyB8vuuM2Vpz30VPsQQjWdMaM1oKC5BhIMf+W5UBKSn6mx2KT4hiqw5KB05V4grQ07ibYiJXW/rwb7I6Bk+bqaAy6cd2gZiuOroqLgy/qPj5viwiBnPts+8e+Edj91aVOj+sSFaVD/ZAFYKVeeDDt28Fag8Dj+xVBT/SvpaQHOXnojksvqixeLMbehdfgvKwg2qpS1h1/qgi8pVuiCywFtnaPuw2j/RcAhduj5JctyWFkNT09Vqxp6edTpXKBoXi6YR+NWSEkoOZ3+AWne4ZbRaCndnTU2fM5Nfz/psytb7E2S20ESdItb4j0I7cKo70YjknGfGweScbHdnPtLu88hFxaTfSUUY1mf1e0Dc7q794IwzrPc3cIVwMX60f/b05PB88i444nEn2xE5R0Bw=
+    branches:
+      - master
+      - integration
+      - /^v\d/
+    stages:
+      - static
+      - spec
+      - beaker
+      - name: deploy
+        if: tag =~ ^v\d
+    docker_defaults:
+      bundler_args: --with system_tests
+      stage: beaker
+    docker_sets:
+      - set: debian-9
+    includes:
+      - '---'
+      - env: CHECK="syntax lint metadata_lint"
+        stage: static
+      - env: CHECK="check:symlinks check:git_ignore check:dot_underscore check:test_file"
+        stage: static
+      - env: CHECK="rubocop"
+        stage: static
+      - env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
+        rvm: 2.4.4
+        stage: spec
+      - env: PUPPET_GEM_VERSION="~> 4.0" CHECK=parallel_spec
+        rvm: 2.1.9
+        stage: spec
+      - env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
+        rvm: 2.5.1
+        stage: spec
+  Gemfile:
+    required:
+      ':system_tests':
+        - gem: 'puppet-module-posix-system-r#{minor_version}'
+          platforms: ruby
+        - gem: 'puppet-module-win-system-r#{minor_version}'
+          platforms:
+            - mswin
+            - mingw
+            - x64_mingw
+        - gem: beaker
+          version: '~> 3.13'
+          from_env: BEAKER_VERSION
+        - gem: beaker-abs
+          from_env: BEAKER_ABS_VERSION
+          version: '~> 0.1'
+        - gem: beaker-pe
+        - gem: beaker-hostgenerator
+          from_env: BEAKER_HOSTGENERATOR_VERSION
+        - gem: beaker-rspec
+          from_env: BEAKER_RSPEC_VERSION
+        - gem: 'rspec-json_expectations'
+          version: '~> 2.1'
