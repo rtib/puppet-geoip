@@ -10,14 +10,10 @@ install_module_dependencies_on(hosts)
 UNSUPPORTED_PLATFORMS = ['aix', 'Solaris', 'BSD'].freeze
 
 RSpec.configure do |c|
-  module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-
   c.formatter = :documentation
 
   # Configure all nodes in nodeset
   c.before :suite do
-    # Install module
-#    puppet_module_install(source: module_root, module_name: 'geoip')
   end
 end
 
