@@ -8,4 +8,4 @@ fixtures:
     'concat':
       repo: 'puppetlabs/concat'
     'systemd':
-      repo: 'camptocamp-systemd'
+      repo: 'camptocamp/systemd'

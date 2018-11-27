@@ -17,7 +17,7 @@
       bundler_args: --with system_tests
       stage: beaker
     docker_sets:
-      - set: debian-9
+#      - set: debian-9
     includes:
       - '---'
       - env: CHECK="syntax lint metadata_lint"
