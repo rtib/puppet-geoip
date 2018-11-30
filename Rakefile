@@ -6,7 +6,7 @@ require 'puppet-strings/tasks' if Bundler.rubygems.find_name('puppet-strings').a
 
 def changelog_user
   return unless Rake.application.top_level_tasks.include? "changelog"
-  returnVal = nil || JSON.load(File.read('metadata.json'))['author']
+  returnVal = "rtib" || JSON.load(File.read('metadata.json'))['author']
   raise "unable to find the changelog_user in .sync.yml, or the author in metadata.json" if returnVal.nil?
   puts "GitHubChangelogGenerator user:#{returnVal}"
   returnVal
@@ -14,7 +14,7 @@ end
 
 def changelog_project
   return unless Rake.application.top_level_tasks.include? "changelog"
-  returnVal = nil || JSON.load(File.read('metadata.json'))['name']
+  returnVal = "puppet-geoip" || JSON.load(File.read('metadata.json'))['name']
   raise "unable to find the changelog_project in .sync.yml or the name in metadata.json" if returnVal.nil?
   puts "GitHubChangelogGenerator project:#{returnVal}"
   returnVal
@@ -72,5 +72,9 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')"
 EOM
   end
+end
+
+Blacksmith::RakeTask.new do |t|
+  t.build = false
 end
 
