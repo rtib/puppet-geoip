@@ -1,11 +1,10 @@
 # geoip
 
 Project state:
-| Service 	| Badges 	|
-|--------------	|--------	|
-| GitHub 	| [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) [![GitHub license](https://img.shields.io/github/license/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/blob/master/LICENSE) [![GitHub tag](https://img.shields.io/github/tag/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/releases)|
-| Travis-CI 	| [![Build Status](https://travis-ci.org/rtib/puppet-geoip.svg?branch=master)](https://travis-ci.org/rtib/puppet-geoip) |
-| Puppet Forge 	| [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) |
+
+GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) [![GitHub license](https://img.shields.io/github/license/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/blob/master/LICENSE) [![GitHub tag](https://img.shields.io/github/tag/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/releases)
+Travis-CI: [![Build Status](https://travis-ci.org/rtib/puppet-geoip.svg?branch=master)](https://travis-ci.org/rtib/puppet-geoip)
+Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
 
 #### Table of Contents
 
@@ -22,10 +21,10 @@ Project state:
 ## Description
 
 This Puppet module installs and maintains tools and processes to use GeoIP databases
-from MaxMind. These include the lookup tools geoiplookup and mmdb-lookup, and the 
+from MaxMind. These include the lookup tools geoiplookup and mmdb-lookup, and the
 geoipupdate tool to update the databases. It will manage the configuration for the
 update tool which enables to set your subscription settings, product IDs and other
-settings, e.g. proxy settings. If systemd is available, a service is defined in order 
+settings, e.g. proxy settings. If systemd is available, a service is defined in order
 to enable a seamless update process, which can be triggered at any time or scheduled
 by cron, a systemd timer unit, puppet or any other scheduler.
 
@@ -40,20 +39,17 @@ service unit.
 
 Neccesary packages must be available for installation by the package management tools
 used on the target system. As this is not the case on many systems, you have to take care
-about the availability of the packages. The list of the packages to be installed is a 
-configuration option.
+about the availability of the packages. The list of the packages to be installed is a configuration option.
 
 ### Beginning with geoip
 
 The only thing to start with geoip is to include the class in the manifest of your nodes.
 
-```
-include ::geoip
+```puppet
+include geoip
 ```
 
-All configuration parameter are assigned automatically, using Puppet 4's automatic parameter
-lookup feature. This enables the module to be configured fully over your hiera database. The
-default values are also lookuped up by hiera using the database shipped with the module.
+All configuration parameter can be assigned hiera. The default values are also lookuped up by hiera using the database shipped with the module.
 
 ## Usage
 
@@ -77,9 +73,3 @@ are Known Issues, you might want to include them under their own heading here.
 
 Since your module is awesome, other users will want to play with it. Let them
 know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.

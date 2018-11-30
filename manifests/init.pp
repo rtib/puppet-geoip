@@ -1,46 +1,40 @@
-# Class: geoip
-# ===========================
+# The geoip module installs tools and databases GeoIP resolution from MaxMind.
 #
-# Full description of class geoip here.
+# @example hiera
+#     geoip::config:
+#       userid: '999999'
+#       licensekey: '000000000000'
+#       productids:
+#         - GeoLite2-City
+#         - GeoLite2-Country
+#         - GeoLite-Legacy-IPv6-City
+#         - GeoLite-Legacy-IPv6-Country
+#         - '506'
+#         - '517'
+#         - '533'
+#       database_directory:
+#       protocol:
+#       proxy:
+#       proxy_user_password:
+#       skip_hostname_verification:
+#       skip_peer_verification:
+#   
+# You may replace userid and licensekey with your subscription and
+# add the productids you want to sync. Leaving these options on default
+# will allow you to sync all free available databases. With
+# database_directory the destination directory of the databases can be
+# set, protocol, proxy* and *_verification may only be needed in the
+# case your host needs some specific proxy settings to get to the
+# internet.
 #
-# Parameters
-# ----------
-#
-# Document parameters here.
-#
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'geoip':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2017 Your name here, unless otherwise noted.
+# @param ensure install or remove settings done by this module
+# @param packages the software packages containing the tools to be installed
+# @param package_ensure which version of the packages should be ensured
+# @param config_path path to the configuration and license file
+# @param config hash of configuration options
+# @param manage_service whether to manage database updating service
+# @param update_path path to the geoipupdate tool, used by update service
+# @param service_name name of the update service
 #
 class geoip (
   Enum['present', 'absent'] $ensure,
