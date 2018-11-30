@@ -6,8 +6,7 @@ GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip
 
 Travis-CI: [![Build Status](https://travis-ci.org/rtib/puppet-geoip.svg?branch=master)](https://travis-ci.org/rtib/puppet-geoip)
 
-Puppet Forge: [![Puppet Forge]
-(https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
+Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
 
 #### Table of Contents
 
