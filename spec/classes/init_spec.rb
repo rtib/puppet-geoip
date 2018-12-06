@@ -33,7 +33,7 @@ describe 'geoip' do
         end
         it do
           is_expected.to contain_file('/etc/GeoIP.conf')
-            .with_content(%r{^ProductIds GeoLite2-City GeoLite2-Country GeoLite-Legacy-IPv6-City GeoLite-Legacy-IPv6-Country 506 517 533$})
+            .with_content(%r{^ProductIds GeoLite2-City GeoLite2-Country$})
         end
       end # context 'config file contents'
 
