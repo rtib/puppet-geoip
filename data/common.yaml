@@ -1,7 +1,6 @@
 ---
 geoip::ensure: present
 geoip::packages:
-  - geoip-bin
   - mmdb-bin
   - geoipupdate
 geoip::package_ensure: latest
@@ -12,11 +11,6 @@ geoip::config:
   productids:
     - GeoLite2-City
     - GeoLite2-Country
-    - GeoLite-Legacy-IPv6-City
-    - GeoLite-Legacy-IPv6-Country
-    - '506'
-    - '517'
-    - '533'
 #  database_directory:
 #  protocol:
 #  proxy:
