@@ -8,7 +8,7 @@ describe 'geoip update' do
   end
 
   describe 'geoipupdate command' do
-    subject(:systemd_unit) { command('geoipupdate -v') }
+    subject(:update_tool) { command('geoipupdate -v') }
 
     its(:exit_status) { is_expected.to eq 0 }
   end
