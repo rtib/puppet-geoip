@@ -5,12 +5,12 @@ describe 'tool installation' do
     it { is_expected.to exist }
     it { is_expected.to be_file }
     it { is_expected.to be_executable }
-    its(:size) { should > 0 }
+    its(:size) { is_expected.to be > 0 }
   end
   describe file('/usr/bin/mmdblookup') do
     it { is_expected.to exist }
     it { is_expected.to be_file }
     it { is_expected.to be_executable }
-    its(:size) { should > 0 }
+    its(:size) { is_expected.to be > 0 }
   end
 end

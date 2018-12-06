@@ -5,12 +5,12 @@ describe 'geoip database files' do
     it { is_expected.to exist }
     it { is_expected.to be_file }
     it { is_expected.to be_readable }
-    its(:size) { should > 0 }
+    its(:size) { is_expected.to be > 0 }
   end
   describe file('/var/lib/GeoIP/GeoLite2-City.mmdb') do
     it { is_expected.to exist }
     it { is_expected.to be_file }
     it { is_expected.to be_readable }
-    its(:size) { should > 0 }
+    its(:size) { is_expected.to be > 0 }
   end
 end
