@@ -1,6 +1,6 @@
 require 'spec_acceptance_helper'
 
-describe 'geoip update' do
+describe 'lookup some addresses' do
   DBS = ['GeoLite2-Country', 'GeoLite2-City'].freeze
 
   DBS.each do |db|
