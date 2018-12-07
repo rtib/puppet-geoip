@@ -13,7 +13,6 @@ Rakefile:
   secure: "GN+wkLalXykVgGxjRgMbbTxTq1nOmiSQYCe8Ap/VCPHKgn4VMmopQclE/+CwlJOzJGBfAKDvxoQX0AeVbbC0V4J5iWPtSXZcjxqaGySfNF0pA2aPF5NltAAM59SBt9hqdzfiV9zsdD7ilg1JunsLd6q9M5XXE5XfB2rLleSn/1RNZyLBuPijBepasDXASIkSO9WleOKBQY5lNHn0tpcnOc69o34mMTKPpv4hopX8rOANwpi4ks+u4xZBXEVm07X7u9OnMbgRWYrHdoEy9DQ2dSIKKkhjNSbL16zrvCG9KYcDfm9iOwJWEMwCmoXrpq8XgD+T/xbm13nNE/KR5+XzY4dep1YodSN/yIouskzdWJiWJTHe9LwdlWBPsmh+KEog2uHL9P3itNDiKeWFYSKwsJq2xoXfP6l85OhZyKzH0cFBpoX1f4ezlmyiBzHvyKJ7M/z4X74JfJLncnXazFrDQXN5U5+T6ag8P/eztZxVYRZuGob5+mUZm4Ye/sFTU+lV5ZI1N1N5XSXG1rmrwMJ93TWSH3CBjY/qNMH56jhnfcEWe3Vb1bkHhjBEBOproqCftfxpZSdmXLRN7e5RkXbSWtOf0JnOE5UFPAbb/rLPEnjtETTMmR3dysQIU+39jnRXtGr95M3LNhkpm/rTtGyCBYWzp8P++2eMztuM1fSN6+M="
   branches:
     - master
-    - develop
     - /^v\d/
   stages:
     - static

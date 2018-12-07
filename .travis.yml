@@ -64,7 +64,6 @@ branches:
   only:
     - master
     - /^v\d/
-    - develop
 notifications:
   email: false
 deploy:
