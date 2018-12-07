@@ -7,11 +7,6 @@
 #       productids:
 #         - GeoLite2-City
 #         - GeoLite2-Country
-#         - GeoLite-Legacy-IPv6-City
-#         - GeoLite-Legacy-IPv6-Country
-#         - '506'
-#         - '517'
-#         - '533'
 #       database_directory:
 #       protocol:
 #       proxy:

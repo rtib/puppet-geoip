@@ -8,27 +8,34 @@ Travis-CI: [![Build Status](https://travis-ci.org/rtib/puppet-geoip.svg?branch=m
 
 Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
 
-#### Table of Contents
+## Table of Contents
 
-1. [Description](#description)
-1. [Setup - The basics of getting started with geoip](#setup)
-    * [What geoip affects](#what-geoip-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with geoip](#beginning-with-geoip)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [geoip](#geoip)
+    - [Table of Contents](#table-of-contents)
+    - [Description](#description)
+    - [Setup](#setup)
+        - [What geoip affects](#what-geoip-affects)
+        - [Setup Requirements](#setup-requirements)
+        - [Beginning with geoip](#beginning-with-geoip)
+    - [Usage](#usage)
+        - [Updating databases](#updating-databases)
+    - [Reference](#reference)
+    - [Development](#development)
+
+<!-- /code_chunk_output -->
 
 ## Description
 
 This Puppet module installs and maintains tools and processes to use GeoIP databases
-from MaxMind. These include the lookup tools geoiplookup and mmdb-lookup, and the
-geoipupdate tool to update the databases. It will manage the configuration for the
-update tool which enables to set your subscription settings, product IDs and other
+from MaxMind. These include the lookup tools for lookup and update the databases. It will manage the configuration for the
+update tool which enables to set up your subscription settings, product IDs and other
 settings, e.g. proxy settings. If systemd is available, a service is defined in order
-to enable a seamless update process, which can be triggered at any time or scheduled
-by cron, a systemd timer unit, puppet or any other scheduler.
+to enable a seamless update process.
 
 ## Setup
 
@@ -55,23 +62,39 @@ All configuration parameter can be assigned hiera. The default values are also l
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+All configuration parameter can be set using hiera. The default values allow you to download all free available geoip databases from MaxMind.
+
+```yaml
+geoip::config:
+  userid: '999999'
+  licensekey: '000000000000'
+  productids:
+    - GeoLite2-City
+    - GeoLite2-Country
+```
+
+If you have a subscription, add userid and licensekey to your hiera, along with the productids your subscription is valid for and you want to download.
+Note, that this configuration will only be active at the next update.
+
+Optional configuration settings are available, enable to set:
+
+* `database_directory`: where to store the database files
+* `protocol`: HTTP or HTTPS
+* `proxy`: URL to the Proxy service allowing access to the Internet
+* `proxy_user_password`: Username and password to the Proxy, if needed.
+* `skip_hostname_verification`: Disable hostname verification.
+* `skip_peer_verification`: Disable certificate validation.
+
+### Updating databases
+
+In order to update your databases you may use the `geoipupdate` tool with the configuration file created by this puppet module.
+
+If you haven't disabled `geoip::manage_service`, you may start the update service named `geoip::service_name` (defaults to `geoip_update`), which will do the update.
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
-
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+Generated reference documentation is available at [https://rtib.github.io/puppet-geoip/](https://rtib.github.io/puppet-geoip/).
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+According to its license, you are free to contribute changes to this module. You may aware of the general workflows when contributing to GitHub projects, if not yet, please read CONTRIBUTING.md.
