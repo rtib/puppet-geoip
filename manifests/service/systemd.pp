@@ -4,4 +4,20 @@ class geoip::service::systemd {
     ensure  => $geoip::ensure,
     content => epp('geoip/service_unit.epp'),
   }
+
+  if $geoip::update_timers.length > 0 {
+    systemd::unit_file{ "${geoip::service_name}.timer":
+      ensure  => $geoip::ensure,
+      content => epp('geoip/service_timer.epp'),
+    }
+    service { "${geoip::service_name}.timer":
+      ensure => 'running',
+      enable => true,
+    }
+  } else {
+    service { "${geoip::service_name}.timer":
+      ensure => 'stopped',
+      enable => false,
+    }
+  }
 }

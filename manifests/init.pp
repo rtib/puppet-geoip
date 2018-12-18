@@ -30,6 +30,8 @@
 # @param manage_service whether to manage database updating service
 # @param update_path path to the geoipupdate tool, used by update service
 # @param service_name name of the update service
+# @param update_timers wallclock timers when the update service should be triggered
+# @param update_scatter a time window in seconds of randomized, host specific delay of the update trigger
 #
 class geoip (
   Enum['present', 'absent'] $ensure,
@@ -50,6 +52,8 @@ class geoip (
   Boolean                   $manage_service,
   String                    $update_path,
   String                    $service_name,
+  Array[String]             $update_timers = [],
+  Integer                   $update_scatter = 1800,
 ) {
   contain geoip::install
   contain geoip::config
