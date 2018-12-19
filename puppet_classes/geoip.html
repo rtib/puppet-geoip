@@ -254,6 +254,47 @@ proxy settings to get to the internet.</p>
       
     </li>
   
+    <li>
+      
+        <span class='name'>update_timers</span>
+      
+      
+        <span class='type'>(<tt>Array[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>wallclock timers when the update service should be triggered (for syntax
+see <a
+href="https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps">systemd.time(7)#Parsing
+Timestamps</a>)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>update_scatter</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1800</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a time window in seconds of randomized, host specific delay of the update
+trigger (see <a
+href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=">systemd.timer(5)#AccuracySec</a>)</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 
@@ -264,8 +305,6 @@ proxy settings to get to the internet.</p>
         <pre class="lines">
 
 
-34
-35
 36
 37
 38
@@ -291,10 +330,14 @@ proxy settings to get to the internet.</p>
 58
 59
 60
-61</pre>
+61
+62
+63
+64
+65</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 34</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 36</span>
 
 class geoip (
   Enum[&#39;present&#39;, &#39;absent&#39;] $ensure,
@@ -315,6 +358,8 @@ class geoip (
   Boolean                   $manage_service,
   String                    $update_path,
   String                    $service_name,
+  Array[String]             $update_timers = [],
+  Integer                   $update_scatter = 1800,
 ) {
   contain geoip::install
   contain geoip::config

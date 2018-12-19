@@ -82,7 +82,7 @@ src="https://img.shields.io/puppetforge/dt/trepasi/geoip.svg"></a></p>
 <h2 id="label-Table+of+Contents">Table of Contents</h2>
 <!-- @import "[TOC]" depthFrom=1 depthTo=6 orderedList=false --><!-- code_chunk_output --><ul><li>
 <p><a href="#label-Geoip">geoip</a></p>
-<ul><li>
+</li><li>
 <p><a href="#label-Table+of+contents">Table of Contents</a></p>
 </li><li>
 <p><a href="#label-Description">Description</a></p>
@@ -99,12 +99,13 @@ src="https://img.shields.io/puppetforge/dt/trepasi/geoip.svg"></a></p>
 <p><a href="#label-Usage">Usage</a></p>
 <ul><li>
 <p><a href="#label-Updating+databases">Updating databases</a></p>
+</li><li>
+<p><a href="#label-Update+scheduling">Update scheduling</a></p>
 </li></ul>
 </li><li>
 <p><a href="#label-Reference">Reference</a></p>
 </li><li>
 <p><a href="#label-Development">Development</a></p>
-</li></ul>
 </li></ul>
 <!-- /code_chunk_output -->
 <h2 id="label-Description">Description</h2>
@@ -183,6 +184,20 @@ tool with the configuration file created by this puppet module.</p>
 <p>If you haven&#39;t disabled <code>geoip::manage_service</code>, you may
 start the update service named <code>geoip::service_name</code> (defaults
 to <code>geoip_update</code>), which will do the update.</p>
+
+<h3 id="label-Update+scheduling">Update scheduling</h3>
+
+<p>Updates, if handled by SystemD, can be scheduled by setting
+<code>geoip::update_timers</code> an array of timer descriptions. These
+timer descriptions apply on systemd timer unit OnCalendar options. For
+correct syntax of these timestamps see <a
+href="https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps">systemd.time(7)#Parsing
+Timestamps</a>.</p>
+
+<p>The parameter <code>geoip::update_scatter</code> defines the seconds for
+systemd timer AccuracySec option (see <a
+href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=">systemd.timer(5)#AccuracySec</a>)
+to prevent multiple nodes to update at the same time.</p>
 
 <h2 id="label-Reference">Reference</h2>
 
