@@ -2,11 +2,11 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [1.0.0](https://github.com/rtib/puppet-geoip/tree/1.0.0) (2018-12-19)
+## [v1.0.0](https://github.com/rtib/puppet-geoip/tree/v1.0.0) (2018-12-19)
 
-[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v0.2.0...1.0.0)
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v0.2.0...v1.0.0)
 
-### UNCATEGORIZED PRS; GO LABEL THEM
+### Added
 
 - add systemd timer unit to update [\#6](https://github.com/rtib/puppet-geoip/pull/6) ([rtib](https://github.com/rtib))
 
@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file. The format 
 - improve acceptance tests [\#4](https://github.com/rtib/puppet-geoip/pull/4) ([rtib](https://github.com/rtib))
 - convert to pdk 1.8.0 and upstream templates [\#2](https://github.com/rtib/puppet-geoip/pull/2) ([rtib](https://github.com/rtib))
 
-### UNCATEGORIZED PRS; GO LABEL THEM
+### Fixed
 
 - remove-legacy [\#3](https://github.com/rtib/puppet-geoip/pull/3) ([rtib](https://github.com/rtib))
 
