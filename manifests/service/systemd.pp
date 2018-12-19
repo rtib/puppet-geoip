@@ -8,7 +8,7 @@ class geoip::service::systemd {
   if $geoip::update_timers.length > 0 {
     systemd::unit_file{ "${geoip::service_name}.timer":
       ensure  => $geoip::ensure,
-      content => epp('geoip/service_timer.epp'),
+      content => epp('geoip/timer_unit.epp'),
     }
     service { "${geoip::service_name}.timer":
       ensure => 'running',
