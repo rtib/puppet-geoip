@@ -30,8 +30,8 @@
 # @param manage_service whether to manage database updating service
 # @param update_path path to the geoipupdate tool, used by update service
 # @param service_name name of the update service
-# @param update_timers wallclock timers when the update service should be triggered
-# @param update_scatter a time window in seconds of randomized, host specific delay of the update trigger
+# @param update_timers wallclock timers when the update service should be triggered (for syntax see [systemd.time(7)#Parsing Timestamps](https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps))
+# @param update_scatter a time window in seconds of randomized, host specific delay of the update trigger (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=))
 #
 class geoip (
   Enum['present', 'absent'] $ensure,

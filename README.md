@@ -16,16 +16,17 @@ Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoi
 <!-- code_chunk_output -->
 
 - [geoip](#geoip)
-    - [Table of Contents](#table-of-contents)
-    - [Description](#description)
-    - [Setup](#setup)
-        - [What geoip affects](#what-geoip-affects)
-        - [Setup Requirements](#setup-requirements)
-        - [Beginning with geoip](#beginning-with-geoip)
-    - [Usage](#usage)
-        - [Updating databases](#updating-databases)
-    - [Reference](#reference)
-    - [Development](#development)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Setup](#setup)
+    - [What geoip affects](#what-geoip-affects)
+    - [Setup Requirements](#setup-requirements)
+    - [Beginning with geoip](#beginning-with-geoip)
+  - [Usage](#usage)
+    - [Updating databases](#updating-databases)
+    - [Update scheduling](#update-scheduling)
+  - [Reference](#reference)
+  - [Development](#development)
 
 <!-- /code_chunk_output -->
 
@@ -90,6 +91,12 @@ Optional configuration settings are available, enable to set:
 In order to update your databases you may use the `geoipupdate` tool with the configuration file created by this puppet module.
 
 If you haven't disabled `geoip::manage_service`, you may start the update service named `geoip::service_name` (defaults to `geoip_update`), which will do the update.
+
+### Update scheduling
+
+Updates, if handled by SystemD, can be scheduled by setting `geoip::update_timers` an array of timer descriptions. These timer descriptions apply on systemd timer unit OnCalendar options. For correct syntax of these timestamps see [systemd.time(7)#Parsing Timestamps](https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps).
+
+The parameter `geoip::update_scatter` defines the seconds for systemd timer AccuracySec option (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=)) to prevent multiple nodes to update at the same time.
 
 ## Reference
 
