@@ -4,7 +4,9 @@ describe 'geoip' do
   context 'default installation' do
     let(:manifest) do
       <<-EOS
-      include geoip
+      class { 'geoip':
+        update_timers => ['*:25'],
+      }
       EOS
     end
 
