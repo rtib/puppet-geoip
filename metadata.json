@@ -39,6 +39,7 @@
     "geoip",
     "maxmind"
   ],
+  "pdk-version": "1.9.1",
   "template-url": "https://github.com/rtib/pdk-templates",
-  "template-ref": "heads/master-0-geb405e5"
+  "template-ref": "heads/master-0-g45425e4"
 }
