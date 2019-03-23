@@ -35,7 +35,10 @@
       "version_requirement": ">=5.0.0 <7.0.0"
     }
   ],
-  "pdk-version": "1.9.0",
+  "tags": [
+    "geoip",
+    "maxmind"
+  ],
   "template-url": "https://github.com/rtib/pdk-templates",
   "template-ref": "heads/master-0-geb405e5"
 }
