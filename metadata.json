@@ -39,7 +39,7 @@
     "geoip",
     "maxmind"
   ],
-  "pdk-version": "1.10.0",
-  "template-url": "https://github.com/puppetlabs/pdk-templates#1.10.0",
-  "template-ref": "tags/1.10.0-0-gbba9ac3"
+  "pdk-version": "1.11.1",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#1.11.1",
+  "template-ref": "tags/1.11.1-0-g2ff8c24"
 }

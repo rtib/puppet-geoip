@@ -1,8 +1,8 @@
 ---
-changelog_user: rtib
-changelog_project: puppet-geoip
 mock_with: ':rspec'
 Rakefile:
+  changelog_user: rtib
+  changelog_project: puppet-geoip
   extras:
     - |
       Blacksmith::RakeTask.new do |t|
@@ -42,3 +42,10 @@ Gemfile:
         from_env: BEAKER_RSPEC_VERSION
       - gem: 'rspec-json_expectations'
         version: '~> 2.1'
+appveyor.yml:
+  delete: true
+.gitlab-ci.yml:
+  delete: true
+.gitignore:
+  required: &ignorepaths
+      - '/.vscode/'
