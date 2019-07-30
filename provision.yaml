@@ -1,0 +1,4 @@
+---
+debian:
+  provisioner: docker
+  images: ['jrei/systemd-debian:9']
