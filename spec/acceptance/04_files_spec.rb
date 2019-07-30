@@ -1,4 +1,4 @@
-require 'spec_acceptance_helper'
+require 'spec_helper_acceptance'
 
 describe 'check database files' do
   DBS = ['GeoLite2-Country', 'GeoLite2-City'].freeze

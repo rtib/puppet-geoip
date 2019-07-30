@@ -1,4 +1,4 @@
-require 'spec_acceptance_helper'
+require 'spec_helper_acceptance'
 
 describe 'geoip update' do
   describe 'systemd service' do
