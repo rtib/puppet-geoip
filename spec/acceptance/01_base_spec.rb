@@ -10,6 +10,8 @@ describe 'geoip' do
       EOS
     end
 
-    it_behaves_like 'an idempotent resource'
+    it 'applies idempotently' do
+      idempotent_apply(manifest)
+    end
   end
 end
