@@ -6,7 +6,7 @@ geoip::packages:
 geoip::package_ensure: latest
 geoip::config_path: '/etc/GeoIP.conf'
 geoip::config:
-  userid: '999999'
+  userid: '0'
   licensekey: '000000000000'
   productids:
     - GeoLite2-City

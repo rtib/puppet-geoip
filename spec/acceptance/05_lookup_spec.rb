@@ -1,8 +1,6 @@
 require 'spec_helper_acceptance'
 
 describe 'lookup some addresses' do
-  DBS = ['GeoLite2-Country', 'GeoLite2-City'].freeze
-
   DBS.each do |db|
     context "against database #{db}" do
       describe 'valid IP address' do

@@ -1,4 +1,7 @@
 ---
-debian:
+travis_deb:
   provisioner: docker
-  images: ['jrei/systemd-debian:9']
+  images: ['litmusimage/debian:9']
+travis_el:
+  provisioner: docker
+  images: ['litmusimage/centos:8']
