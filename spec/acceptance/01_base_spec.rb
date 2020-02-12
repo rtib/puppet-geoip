@@ -5,6 +5,10 @@ describe 'geoip' do
     let(:manifest) do
       <<-EOS
       class { 'geoip':
+        config        => {
+          userid     => '#{ENV['MM_LT311_USERID']}',
+          licensekey => '#{ENV['MM_LT311_LICENSEKEY']}',
+        },
         update_timers => ['*:25'],
       }
       EOS
