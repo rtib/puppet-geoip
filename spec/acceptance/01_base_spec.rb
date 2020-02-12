@@ -1,15 +1,21 @@
-require 'spec_acceptance_helper'
+require 'spec_helper_acceptance'
 
 describe 'geoip' do
   context 'default installation' do
     let(:manifest) do
       <<-EOS
       class { 'geoip':
+        config        => {
+          userid     => '#{ENV['MM_LT311_USERID']}',
+          licensekey => '#{ENV['MM_LT311_LICENSEKEY']}',
+        },
         update_timers => ['*:25'],
       }
       EOS
     end
 
-    it_behaves_like 'an idempotent resource'
+    it 'applies idempotently' do
+      idempotent_apply(manifest)
+    end
   end
 end

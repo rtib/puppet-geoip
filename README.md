@@ -27,6 +27,7 @@ Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoi
     - [Update scheduling](#update-scheduling)
   - [Reference](#reference)
   - [Development](#development)
+  - [Copyright](#copyright)
 
 <!-- /code_chunk_output -->
 
@@ -105,3 +106,7 @@ Generated reference documentation is available at [https://rtib.github.io/puppet
 ## Development
 
 According to its license, you are free to contribute changes to this module. You may aware of the general workflows when contributing to GitHub projects, if not yet, please read CONTRIBUTING.md.
+
+## Copyright
+
+This product is tested using GeoLite2 data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com).

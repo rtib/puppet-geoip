@@ -1,4 +1,4 @@
-require 'spec_acceptance_helper'
+require 'spec_helper_acceptance'
 
 describe 'tool installation' do
   CMDS = ['/usr/bin/geoipupdate', '/usr/bin/mmdblookup'].freeze

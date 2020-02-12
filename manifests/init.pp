@@ -34,24 +34,15 @@
 # @param update_scatter a time window in seconds of randomized, host specific delay of the update trigger (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=))
 #
 class geoip (
-  Enum['present', 'absent'] $ensure,
-  Array[String]             $packages,
-  String                    $package_ensure,
-  String                    $config_path,
-  Struct[{
-    userid                     => String,
-    licensekey                 => String,
-    productids                 => Array[String],
-    database_directory         => Optional[String],
-    protocol                   => Optional[Enum['http','https']],
-    proxy                      => Optional[String],
-    proxy_user_password        => Optional[String],
-    skip_hostname_verification => Optional[Boolean],
-    skip_peer_verification     => Optional[Boolean],
-  }]                        $config,
-  Boolean                   $manage_service,
-  String                    $update_path,
-  String                    $service_name,
+  Enum['present', 'absent'] $ensure = 'present',
+  Array[String]             $packages = ['mmdb-bin', 'geoipupdate'],
+  String                    $package_ensure = 'latest',
+  Stdlib::Absolutepath      $config_path = '/etc/GeoIP.conf',
+  Enum['lt311']             $config_version = 'lt311',
+  Hash                      $config = {},
+  Boolean                   $manage_service = true,
+  Stdlib::Absolutepath      $update_path = '/usr/bin/geoipupdate',
+  String                    $service_name = 'geoip_update',
   Array[String]             $update_timers = [],
   Integer                   $update_scatter = 1800,
 ) {

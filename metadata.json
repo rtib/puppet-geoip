@@ -1,6 +1,6 @@
 {
   "name": "trepasi-geoip",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "T. Repasi",
   "summary": "Install tools and update process for GeoIP database.",
   "license": "Apache-2.0",
@@ -10,11 +10,11 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 5.0.0 < 6.0.0"
+      "version_requirement": ">= 5.0.0 < 7.0.0"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 5.0.0 < 6.0.0"
+      "version_requirement": ">= 5.0.0 < 7.0.0"
     },
     {
       "name": "camptocamp/systemd",
@@ -39,7 +39,7 @@
     "geoip",
     "maxmind"
   ],
-  "pdk-version": "1.11.1",
-  "template-url": "https://github.com/puppetlabs/pdk-templates#1.11.1",
-  "template-ref": "tags/1.11.1-0-g2ff8c24"
+  "pdk-version": "1.16.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#1.16.0",
+  "template-ref": "tags/1.16.0-0-gaf44904"
 }
