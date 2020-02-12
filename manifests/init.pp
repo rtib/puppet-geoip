@@ -38,7 +38,7 @@ class geoip (
   Array[String]             $packages = ['mmdb-bin', 'geoipupdate'],
   String                    $package_ensure = 'latest',
   Stdlib::Absolutepath      $config_path = '/etc/GeoIP.conf',
-  Enum['lt311']             $config_version = 'lt311',
+  Enum['lt311','ge311']     $config_version = 'lt311',
   Hash                      $config = {},
   Boolean                   $manage_service = true,
   Stdlib::Absolutepath      $update_path = '/usr/bin/geoipupdate',
