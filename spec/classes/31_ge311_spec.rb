@@ -7,7 +7,7 @@ describe 'geoip' do
         default_facts
       end
 
-      describe 'geoip::config::lt311', if: config_for(os)[:class] == 'lt311' do
+      describe 'geoip::config::ge311', if: config_for(os)[:class] == 'ge311' do
         let(:params) do
           default_config(os)
         end
@@ -22,7 +22,7 @@ describe 'geoip' do
         end
         it do
           is_expected.to contain_file('/etc/GeoIP.conf')
-            .with_content(%r{^UserId 999999$})
+            .with_content(%r{^AccountID 999999$})
         end
         it do
           is_expected.to contain_file('/etc/GeoIP.conf')
@@ -30,7 +30,7 @@ describe 'geoip' do
         end
         it do
           is_expected.to contain_file('/etc/GeoIP.conf')
-            .with_content(%r{^ProductIds GeoLite2-City GeoLite2-Country$})
+            .with_content(%r{^EditionIDs GeoLite2-City GeoLite2-Country$})
         end
       end
     end # on_supported_os.each

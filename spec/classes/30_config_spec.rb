@@ -8,17 +8,12 @@ describe 'geoip' do
           default_facts
         end
 
-        describe 'geoipupdate < 3.1.1' do
+        describe "geoipupdate #{config_for(os)[:name]}" do
           let(:params) do
-            {
-              'config' => {
-                'userid'     => '999999',
-                'licensekey' => '000000000000',
-              },
-            }
+            default_config(os)
           end
 
-          it { is_expected.to contain_class('geoip::config::lt311') }
+          it { is_expected.to contain_class("geoip::config::#{config_for(os)[:class]}") }
         end
       end
     end # on_supported_os.each

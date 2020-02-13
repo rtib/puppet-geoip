@@ -1,3 +1,7 @@
+# This class is creating a GeoIP.conf configuration file for geoipupdate
+# versions < 3.1.1.
+#
+# @param userid
 class geoip::config::lt311(
   String $userid,
   String $licensekey,

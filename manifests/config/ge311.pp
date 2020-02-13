@@ -1,5 +1,5 @@
 class geoip::config::ge311(
-  Integer $accountid,
+  String $accountid,
   String $licensekey,
   Array[String] $editionids = ['GeoLite2-City','GeoLite2-Country'],
   Optional[Stdlib::Absolutepath] $database_directory = undef,

@@ -9,12 +9,7 @@ describe 'geoip' do
         end
 
         let(:params) do
-          {
-            'config' => {
-              'userid'     => '999999',
-              'licensekey' => '000000000000',
-            },
-          }
+          default_config(os)
         end
 
         it { is_expected.to contain_package('mmdb-bin').with_ensure('latest') }
