@@ -26,6 +26,7 @@
 # @param packages the software packages containing the tools to be installed
 # @param package_ensure which version of the packages should be ensured
 # @param config_path path to the configuration and license file
+# @param config_version the config version to use for geoipupdate
 # @param config hash of configuration options
 # @param manage_service whether to manage database updating service
 # @param update_path path to the geoipupdate tool, used by update service
@@ -38,7 +39,7 @@ class geoip (
   Array[String]             $packages = ['mmdb-bin', 'geoipupdate'],
   String                    $package_ensure = 'latest',
   Stdlib::Absolutepath      $config_path = '/etc/GeoIP.conf',
-  Enum['lt311']             $config_version = 'lt311',
+  Enum['lt311','ge311']     $config_version = 'lt311',
   Hash                      $config = {},
   Boolean                   $manage_service = true,
   Stdlib::Absolutepath      $update_path = '/usr/bin/geoipupdate',

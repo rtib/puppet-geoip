@@ -10,12 +10,7 @@ describe 'geoip' do
 
         describe 'with systemd' do
           let(:params) do
-            {
-              'config' => {
-                'userid'     => '999999',
-                'licensekey' => '000000000000',
-              },
-            }
+            default_config(os)
           end
 
           context 'systemd unit file contents' do
@@ -34,13 +29,9 @@ describe 'geoip' do
           end
           describe 'add one timer' do
             let(:params) do
-              {
-                'config' => {
-                  'userid'     => '999999',
-                  'licensekey' => '000000000000',
-                },
+              default_config(os).merge(
                 'update_timers' => ['Mon..Fri *-*-* 06:30:00'],
-              }
+              )
             end
 
             context 'systemd timer file contents' do
@@ -61,14 +52,10 @@ describe 'geoip' do
 
           describe 'add multiple timers' do
             let(:params) do
-              {
-                'config' => {
-                  'userid'     => '999999',
-                  'licensekey' => '000000000000',
-                },
-                'update_timers'  => ['Mon..Fri *-*-* 06:30:00', 'Mon..Fri *-*-* 18:30:00'],
+              default_config(os).merge(
+                'update_timers' => ['Mon..Fri *-*-* 06:30:00', 'Mon..Fri *-*-* 18:30:00'],
                 'update_scatter' => 300,
-              }
+              )
             end
 
             context 'systemd timer file contents' do
