@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v2.0.0](https://github.com/rtib/puppet-geoip/tree/v2.0.0) (2020-02-14)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v1.0.1...v2.0.0)
+
+### Changed
+
+- major refactoring - convert acceptance tests to litmus [\#12](https://github.com/rtib/puppet-geoip/pull/12) ([rtib](https://github.com/rtib))
+
+### Added
+
+- simplifying and documenting things [\#16](https://github.com/rtib/puppet-geoip/pull/16) ([rtib](https://github.com/rtib))
+- Add support for Debian-10 [\#15](https://github.com/rtib/puppet-geoip/pull/15) ([rtib](https://github.com/rtib))
+- Add support for geoipupdate version 3.1.1 configuration file [\#14](https://github.com/rtib/puppet-geoip/pull/14) ([rtib](https://github.com/rtib))
+
+### Fixed
+
+- changelog contains broken links [\#10](https://github.com/rtib/puppet-geoip/pull/10) ([rtib](https://github.com/rtib))
+
 ## [v1.0.1](https://github.com/rtib/puppet-geoip/tree/v1.0.1) (2018-12-19)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v1.0.0...v1.0.1)
