@@ -10,7 +10,6 @@
 # @param proxy_user_password Credentials as username:password for proxy authentication
 # @param preserve_file_times Whether to preserve modification times of files downloaded from the server
 # @param lock_file The lock file to use
-# @param userid this is a deprecated parameter supporting only the upgrade from earlyer versions; will raise a deprecation warning if set
 class geoip::config::ge311(
   String $accountid,
   String $licensekey,
@@ -21,11 +20,7 @@ class geoip::config::ge311(
   Optional[String] $proxy_user_password = undef,
   Optional[Boolean] $preserve_file_times = undef,
   Optional[String] $lock_file = undef,
-  Optional[String] $userid = undef,
 ) {
-  if $userid {
-    warning('Parameter userid is still set. It is deprecated, dysfunctional and can be removed.')
-  }
   $cfg_ensure = $geoip::ensure ? {
     /present/ => 'file',
     default   => $geoip::ensure,
