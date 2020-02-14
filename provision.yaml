@@ -1,4 +1,4 @@
 ---
 travis_deb:
   provisioner: docker
-  images: ['litmusimage/debian:9']
+  images: ['litmusimage/debian:9','litmusimage/debian:10']
