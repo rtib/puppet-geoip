@@ -6,15 +6,15 @@
 <title>
   Puppet Class: geoip
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.24
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::geoip";
   relpath = '../';
 </script>
@@ -124,6 +124,8 @@ proxy settings to get to the internet.</p>
         <span class='type'>(<tt>Enum['present', 'absent']</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>&#39;present&#39;</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -139,6 +141,8 @@ proxy settings to get to the internet.</p>
       
         <span class='type'>(<tt>Array[String]</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>[&#39;mmdb-bin&#39;, &#39;geoipupdate&#39;]</tt>)</em>
       
       
         &mdash;
@@ -156,6 +160,8 @@ proxy settings to get to the internet.</p>
         <span class='type'>(<tt>String</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>&#39;latest&#39;</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -169,8 +175,10 @@ proxy settings to get to the internet.</p>
         <span class='name'>config_path</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>&#39;/etc/GeoIP.conf&#39;</tt>)</em>
       
       
         &mdash;
@@ -182,21 +190,31 @@ proxy settings to get to the internet.</p>
   
     <li>
       
+        <span class='name'>config_version</span>
+      
+      
+        <span class='type'>(<tt>Enum['lt311','ge311']</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;lt311&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the config version to use for geoipupdate</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>config</span>
       
       
-        <span class='type'>(<tt>Struct[{
-    userid                     =&gt; String,
-    licensekey                 =&gt; String,
-    productids                 =&gt; Array[String],
-    database_directory         =&gt; Optional[String],
-    protocol                   =&gt; Optional[Enum['http','https']],
-    proxy                      =&gt; Optional[String],
-    proxy_user_password        =&gt; Optional[String],
-    skip_hostname_verification =&gt; Optional[Boolean],
-    skip_peer_verification     =&gt; Optional[Boolean],
-  }]</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
       
       
         &mdash;
@@ -214,6 +232,8 @@ proxy settings to get to the internet.</p>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -227,8 +247,10 @@ proxy settings to get to the internet.</p>
         <span class='name'>update_path</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>&#39;/usr/bin/geoipupdate&#39;</tt>)</em>
       
       
         &mdash;
@@ -245,6 +267,8 @@ proxy settings to get to the internet.</p>
       
         <span class='type'>(<tt>String</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>&#39;geoip_update&#39;</tt>)</em>
       
       
         &mdash;
@@ -305,7 +329,6 @@ href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#Accura
         <pre class="lines">
 
 
-36
 37
 38
 39
@@ -326,38 +349,21 @@ href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#Accura
 54
 55
 56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+57</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 36</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 37</span>
 
 class geoip (
-  Enum[&#39;present&#39;, &#39;absent&#39;] $ensure,
-  Array[String]             $packages,
-  String                    $package_ensure,
-  String                    $config_path,
-  Struct[{
-    userid                     =&gt; String,
-    licensekey                 =&gt; String,
-    productids                 =&gt; Array[String],
-    database_directory         =&gt; Optional[String],
-    protocol                   =&gt; Optional[Enum[&#39;http&#39;,&#39;https&#39;]],
-    proxy                      =&gt; Optional[String],
-    proxy_user_password        =&gt; Optional[String],
-    skip_hostname_verification =&gt; Optional[Boolean],
-    skip_peer_verification     =&gt; Optional[Boolean],
-  }]                        $config,
-  Boolean                   $manage_service,
-  String                    $update_path,
-  String                    $service_name,
+  Enum[&#39;present&#39;, &#39;absent&#39;] $ensure = &#39;present&#39;,
+  Array[String]             $packages = [&#39;mmdb-bin&#39;, &#39;geoipupdate&#39;],
+  String                    $package_ensure = &#39;latest&#39;,
+  Stdlib::Absolutepath      $config_path = &#39;/etc/GeoIP.conf&#39;,
+  Enum[&#39;lt311&#39;,&#39;ge311&#39;]     $config_version = &#39;lt311&#39;,
+  Hash                      $config = {},
+  Boolean                   $manage_service = true,
+  Stdlib::Absolutepath      $update_path = &#39;/usr/bin/geoipupdate&#39;,
+  String                    $service_name = &#39;geoip_update&#39;,
   Array[String]             $update_timers = [],
   Integer                   $update_scatter = 1800,
 ) {

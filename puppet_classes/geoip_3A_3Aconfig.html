@@ -6,15 +6,15 @@
 <title>
   Puppet Class: geoip::config
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.24
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::geoip::config";
   relpath = '../';
 </script>
@@ -99,32 +99,14 @@ created using parameter from <code>geoip::config</code>.</p>
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre>
+9</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/config.pp', line 5</span>
 
 class geoip::config {
-  $cfg_ensure = $geoip::ensure ? {
-    /present/ =&gt; &#39;file&#39;,
-    default   =&gt; $geoip::ensure,
-  }
-
-  file{ $geoip::config_path:
-    ensure  =&gt; $cfg_ensure,
-    content =&gt; epp(&#39;geoip/GeoIP.conf.epp&#39;),
-    mode    =&gt; &#39;0640&#39;,
-    group   =&gt; 0,
-    owner   =&gt; 0,
+  class { &quot;geoip::config::${geoip::config_version}&quot;:
+    * =&gt; $geoip::config,
   }
 }</pre>
       </td>

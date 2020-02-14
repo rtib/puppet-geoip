@@ -6,15 +6,15 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.24
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "";
   relpath = '';
 </script>
@@ -66,6 +66,8 @@
 src="https://img.shields.io/github/issues/rtib/puppet-geoip.svg"></a> <a
 href="https://github.com/rtib/puppet-geoip/blob/master/LICENSE"><img
 src="https://img.shields.io/github/license/rtib/puppet-geoip.svg"></a> <a
+href="https://github.com/rtib/puppet-geoip/commits/master"><img
+src="https://img.shields.io/github/last-commit/rtib/puppet-geoip"></a> <a
 href="https://github.com/rtib/puppet-geoip/releases"><img
 src="https://img.shields.io/github/tag/rtib/puppet-geoip.svg"></a></p>
 
@@ -73,6 +75,8 @@ src="https://img.shields.io/github/tag/rtib/puppet-geoip.svg"></a></p>
 src="https://travis-ci.org/rtib/puppet-geoip.svg?branch=master"></a></p>
 
 <p>Puppet Forge: <a href="https://forge.puppet.com/trepasi/geoip"><img
+src="https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg"></a>
+<a href="https://forge.puppet.com/trepasi/geoip"><img
 src="https://img.shields.io/puppetforge/v/trepasi/geoip.svg"></a> <a
 href="https://forge.puppet.com/trepasi/geoip"><img
 src="https://img.shields.io/puppetforge/f/trepasi/geoip.svg"></a> <a
@@ -98,6 +102,14 @@ src="https://img.shields.io/puppetforge/dt/trepasi/geoip.svg"></a></p>
 </li><li>
 <p><a href="#label-Usage">Usage</a></p>
 <ul><li>
+<p><a href="#label-Configuring+versions+less+than+311">Configuring versions less
+than 3.1.1</a></p>
+</li><li>
+<p><a href="#label-Configuring+versions+311+and+later">Configuring versions 3.1.1
+and later</a></p>
+</li><li>
+<p><a href="#label-Upgrading+to+311+or+later">Upgrading to 3.1.1 or later</a></p>
+</li><li>
 <p><a href="#label-Updating+databases">Updating databases</a></p>
 </li><li>
 <p><a href="#label-Update+scheduling">Update scheduling</a></p>
@@ -106,6 +118,8 @@ src="https://img.shields.io/puppetforge/dt/trepasi/geoip.svg"></a></p>
 <p><a href="#label-Reference">Reference</a></p>
 </li><li>
 <p><a href="#label-Development">Development</a></p>
+</li><li>
+<p><a href="#label-Copyright">Copyright</a></p>
 </li></ul>
 <!-- /code_chunk_output -->
 <h2 id="label-Description">Description</h2>
@@ -144,23 +158,34 @@ also lookuped up by hiera using the database shipped with the module.</p>
 
 <h2 id="label-Usage">Usage</h2>
 
-<p>All configuration parameter can be set using hiera. The default values
-allow you to download all free available geoip databases from MaxMind.</p>
+<p>All configuration parameter can be set using hiera. Note, that MaxMind does
+not allow to download databases without subscription, but there is a free
+tier which can be used to download three GeoLite2 databases.</p>
+
+<p>The configuration depends on the version of the <code>geoipupdate</code>
+tool to use, as there is a difference between versions starting at 3.1.1
+and the older ones. The module referns to these settings via parameter
+<code>geoip::config_version</code> using the value <code>lt311</code> for
+versions less than 3.1.1 and value <code>ge311</code> for version greater
+or equal to 3.1.1.</p>
+
+<h3 id="label-Configuring+versions+less+than+3.1.1">Configuring versions less than 3.1.1</h3>
 
 <pre class="code ruby"><code class="ruby">geoip::config:
-  userid: &#39;999999&#39;
-  licensekey: &#39;000000000000&#39;
-  productids:
-    - GeoLite2-City
-    - GeoLite2-Country</code></pre>
+  userid: &#39;&lt;yourAccountID&gt;&#39;
+  licensekey: &#39;&lt;yourLicenseKey&gt;&#39;
+</code></pre>
 
-<p>If you have a subscription, add userid and licensekey to your hiera, along
-with the productids your subscription is valid for and you want to
-download. Note, that this configuration will only be active at the next
-update.</p>
+<p>Replace the values for <code>userid</code> and <code>licensekey</code> with
+actual data from your subscription.</p>
 
 <p>Optional configuration settings are available, enable to set:</p>
 <ul><li>
+<p><code>productids</code>: array of productids of the databases you want to
+download; it defaults to the freely available databases
+<code>[&#39;GeoLite2-ASN&#39;, &#39;GeoLite2-City&#39;,
+&#39;GeoLite2-Country&#39;]</code></p>
+</li><li>
 <p><code>database_directory</code>: where to store the database files</p>
 </li><li>
 <p><code>protocol</code>: HTTP or HTTPS</p>
@@ -175,6 +200,60 @@ needed.</p>
 </li><li>
 <p><code>skip_peer_verification</code>: Disable certificate validation.</p>
 </li></ul>
+
+<p>Refer to your subscription to get the list of <code>productids</code> you
+are allowed to use.</p>
+
+<h3 id="label-Configuring+versions+3.1.1+and+later">Configuring versions 3.1.1 and later</h3>
+
+<pre class="code ruby"><code class="ruby">geoip::config:
+  accountid: &#39;&lt;yourAccountID&gt;&#39;
+  licensekey: &#39;&lt;yourLicenseKey&gt;&#39;
+</code></pre>
+
+<p>Replace the values for <code>accountid</code> and <code>licensekey</code>
+with actual data from your subscription.</p>
+
+<p>Optional configuration settings are available, enable to set:</p>
+<ul><li>
+<p><code>editionids</code>: array of IDs of the databases you want to
+download; it defaults to the freely available databases
+<code>[&#39;GeoLite2-ASN&#39;, &#39;GeoLite2-City&#39;,
+&#39;GeoLite2-Country&#39;]</code></p>
+</li><li>
+<p><code>database_directory</code>: where to store the database files</p>
+</li><li>
+<p><code>host</code>: the update server to use</p>
+</li><li>
+<p><code>proxy</code>: URL to the Proxy service allowing access to the
+Internet</p>
+</li><li>
+<p><code>proxy_user_password</code>: Username and password to the Proxy, if
+needed.</p>
+</li><li>
+<p><code>lock_file</code>: location of the lock file to use to prevent running
+multiple updates at the same time</p>
+</li></ul>
+
+<p>Refer to your subscription to get the list of <code>editionids</code> you
+are allowed to use.</p>
+
+<h3 id="label-Upgrading+to+3.1.1+or+later">Upgrading to 3.1.1 or later</h3>
+
+<p>Versions of <code>geoipupdate</code> 3.1.1 or later will accept the
+configuration file format of former versions. Making use of that, the
+module provides the <code>geoip::config_version</code> parameter to chose
+the configuration format, which defaults to <code>lt311</code>, but is
+overwritten with <code>ge311</code> for operating system versions known to
+provide geoipupdate version 3.1.1 or later (e.g. Debian Buster). While it
+should not needed to set this parameter in normal operation, during upgrade
+of multiple nodes, the parameter allows to pin the configuration version to
+the needed format.</p>
+
+<p>Note, that a license keys issued for versions less than 3.1.1 of later will
+not work in both configurations, <code>geoipupdate</code> versions less
+than 3.1.1 will fail accessing the update server when a key issed for 3.1.1
+or later is provided in the <code>lt311</code> configuration.</p>
 
 <h3 id="label-Updating+databases">Updating databases</h3>
 
@@ -209,6 +288,11 @@ href="https://rtib.github.io/puppet-geoip/">rtib.github.io/puppet-geoip/</a>.</p
 <p>According to its license, you are free to contribute changes to this
 module. You may aware of the general workflows when contributing to GitHub
 projects, if not yet, please read CONTRIBUTING.md.</p>
+
+<h2 id="label-Copyright">Copyright</h2>
+
+<p>This product is tested using GeoLite2 data created by MaxMind, available
+from <a href="https://www.maxmind.com">www.maxmind.com</a>.</p>
 </div></div>
 
       <div id="footer">
