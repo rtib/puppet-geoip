@@ -13,7 +13,7 @@
 class geoip::config::lt311(
   String $userid,
   String $licensekey,
-  Array[String] $productids = ['GeoLite2-City','GeoLite2-Country'],
+  Array[String] $productids = ['GeoLite2-ASN','GeoLite2-City','GeoLite2-Country'],
   Optional[Stdlib::Absolutepath] $database_directory = undef,
   Optional[Enum['http','https']] $protocol = undef,
   Optional[String] $proxy = undef,

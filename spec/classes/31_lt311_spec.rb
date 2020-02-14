@@ -30,7 +30,7 @@ describe 'geoip' do
         end
         it do
           is_expected.to contain_file('/etc/GeoIP.conf')
-            .with_content(%r{^ProductIds GeoLite2-City GeoLite2-Country$})
+            .with_content(%r{^ProductIds GeoLite2-ASN GeoLite2-City GeoLite2-Country$})
         end
       end
     end # on_supported_os.each
