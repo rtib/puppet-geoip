@@ -23,6 +23,9 @@ Puppet Forge: [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoi
     - [Setup Requirements](#setup-requirements)
     - [Beginning with geoip](#beginning-with-geoip)
   - [Usage](#usage)
+    - [Configuring versions less than 3.1.1](#configuring-versions-less-than-311)
+    - [Configuring versions 3.1.1 and later](#configuring-versions-311-and-later)
+    - [Upgrading to 3.1.1 or later](#upgrading-to-311-or-later)
     - [Updating databases](#updating-databases)
     - [Update scheduling](#update-scheduling)
   - [Reference](#reference)
@@ -64,28 +67,58 @@ All configuration parameter can be assigned hiera. The default values are also l
 
 ## Usage
 
-All configuration parameter can be set using hiera. The default values allow you to download all free available geoip databases from MaxMind.
+All configuration parameter can be set using hiera. Note, that MaxMind does not allow to download databases without subscription, but there is a free tier which can be used to download three GeoLite2 databases.
+
+The configuration depends on the version of the `geoipupdate` tool to use, as there is a difference between versions starting at 3.1.1 and the older ones. The module referns to these settings via parameter `geoip::config_version` using the value `lt311` for versions less than 3.1.1 and value `ge311` for version greater or equal to 3.1.1.
+
+### Configuring versions less than 3.1.1
 
 ```yaml
 geoip::config:
-  userid: '999999'
-  licensekey: '000000000000'
-  productids:
-    - GeoLite2-City
-    - GeoLite2-Country
+  userid: '<yourAccountID>'
+  licensekey: '<yourLicenseKey>'
 ```
 
-If you have a subscription, add userid and licensekey to your hiera, along with the productids your subscription is valid for and you want to download.
-Note, that this configuration will only be active at the next update.
+Replace the values for `userid` and `licensekey` with actual data from your subscription.
 
 Optional configuration settings are available, enable to set:
 
-* `database_directory`: where to store the database files
-* `protocol`: HTTP or HTTPS
-* `proxy`: URL to the Proxy service allowing access to the Internet
-* `proxy_user_password`: Username and password to the Proxy, if needed.
-* `skip_hostname_verification`: Disable hostname verification.
-* `skip_peer_verification`: Disable certificate validation.
+- `productids`: array of productids of the databases you want to download; it defaults to the freely available databases `['GeoLite2-ASN', 'GeoLite2-City', 'GeoLite2-Country']`
+- `database_directory`: where to store the database files
+- `protocol`: HTTP or HTTPS
+- `proxy`: URL to the Proxy service allowing access to the Internet
+- `proxy_user_password`: Username and password to the Proxy, if needed.
+- `skip_hostname_verification`: Disable hostname verification.
+- `skip_peer_verification`: Disable certificate validation.
+
+Refer to your subscription to get the list of `productids` you are allowed to use.
+
+### Configuring versions 3.1.1 and later
+
+```yaml
+geoip::config:
+  accountid: '<yourAccountID>'
+  licensekey: '<yourLicenseKey>'
+```
+
+Replace the values for `accountid` and `licensekey` with actual data from your subscription.
+
+Optional configuration settings are available, enable to set:
+
+- `editionids`: array of IDs of the databases you want to download; it defaults to the freely available databases `['GeoLite2-ASN', 'GeoLite2-City', 'GeoLite2-Country']`
+- `database_directory`: where to store the database files
+- `host`: the update server to use
+- `proxy`: URL to the Proxy service allowing access to the Internet
+- `proxy_user_password`: Username and password to the Proxy, if needed.
+- `lock_file`: location of the lock file to use to prevent running multiple updates at the same time
+
+Refer to your subscription to get the list of `editionids` you are allowed to use.
+
+### Upgrading to 3.1.1 or later
+
+Versions of `geoipupdate` 3.1.1 or later will accept the configuration file format of former versions. Making use of that, the module provides the `geoip::config_version` parameter to chose the configuration format, which defaults to `lt311`, but is overwritten with `ge311` for operating system versions known to provide geoipupdate version 3.1.1 or later (e.g. Debian Buster). While it should not needed to set this parameter in normal operation, during upgrade of multiple nodes, the parameter allows to pin the configuration version to the needed format.
+
+Note, that a license keys issued for versions less than 3.1.1 of later will not work in both configurations, `geoipupdate` versions less than 3.1.1 will fail accessing the update server when a key issed for 3.1.1 or later is provided in the `lt311` configuration.
 
 ### Updating databases
 
