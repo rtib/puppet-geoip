@@ -1,5 +1,8 @@
 # This class implements the service imlementation for SystemD. It should not be called directly.
-class geoip::service::systemd {
+class geoip::service::systemd (
+  String $restart = 'on-abnormal',
+  String $restart_sec = '5min',
+) {
   systemd::unit_file{ "${geoip::service_name}.service":
     ensure  => $geoip::ensure,
     content => epp('geoip/service_unit.epp'),
