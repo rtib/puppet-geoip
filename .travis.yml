@@ -1,4 +1,5 @@
 ---
+os: linux
 dist: xenial
 language: ruby
 cache: bundler
@@ -15,7 +16,7 @@ script:
   - 'bundle exec rake $CHECK'
 bundler_args: --without system_tests
 rvm:
-  - 2.5.3
+  - 2.5.7
 stages:
   - static
   - spec
@@ -23,7 +24,7 @@ stages:
   -
     if: tag =~ ^v\d
     name: deploy
-matrix:
+jobs:
   fast_finish: true
   include:
     -
@@ -31,27 +32,23 @@ matrix:
       - "bundle exec rake 'litmus:provision_list[travis_deb]'"
       - "bundle exec rake 'litmus:install_agent[puppet5]'"
       - "bundle exec rake litmus:install_module"
-      bundler_args: 
-      dist: trusty
+      bundler_args:
       env: PLATFORMS=travis_deb_puppet5
-      rvm: 2.5.3
-      script: ["bundle exec rake litmus:acceptance:parallel"]
+      rvm: 2.5.7
+      script: ["travis_wait 45 bundle exec rake litmus:acceptance:parallel"]
       services: docker
       stage: acceptance
-      sudo: required
     -
       before_script:
       - "bundle exec rake 'litmus:provision_list[travis_deb]'"
       - "bundle exec rake 'litmus:install_agent[puppet6]'"
       - "bundle exec rake litmus:install_module"
-      bundler_args: 
-      dist: trusty
+      bundler_args:
       env: PLATFORMS=travis_deb_puppet6
-      rvm: 2.5.3
-      script: ["bundle exec rake litmus:acceptance:parallel"]
+      rvm: 2.5.7
+      script: ["travis_wait 45 bundle exec rake litmus:acceptance:parallel"]
       services: docker
       stage: acceptance
-      sudo: required
     -
       env: CHECK="check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint"
       stage: static
@@ -61,7 +58,7 @@ matrix:
       stage: spec
     -
       env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
-      rvm: 2.5.3
+      rvm: 2.5.7
       stage: spec
     -
       env: DEPLOY_TO_FORGE=yes
@@ -74,7 +71,7 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: trepasi
+  username: trepasi
   password:
     secure: "GN+wkLalXykVgGxjRgMbbTxTq1nOmiSQYCe8Ap/VCPHKgn4VMmopQclE/+CwlJOzJGBfAKDvxoQX0AeVbbC0V4J5iWPtSXZcjxqaGySfNF0pA2aPF5NltAAM59SBt9hqdzfiV9zsdD7ilg1JunsLd6q9M5XXE5XfB2rLleSn/1RNZyLBuPijBepasDXASIkSO9WleOKBQY5lNHn0tpcnOc69o34mMTKPpv4hopX8rOANwpi4ks+u4xZBXEVm07X7u9OnMbgRWYrHdoEy9DQ2dSIKKkhjNSbL16zrvCG9KYcDfm9iOwJWEMwCmoXrpq8XgD+T/xbm13nNE/KR5+XzY4dep1YodSN/yIouskzdWJiWJTHe9LwdlWBPsmh+KEog2uHL9P3itNDiKeWFYSKwsJq2xoXfP6l85OhZyKzH0cFBpoX1f4ezlmyiBzHvyKJ7M/z4X74JfJLncnXazFrDQXN5U5+T6ag8P/eztZxVYRZuGob5+mUZm4Ye/sFTU+lV5ZI1N1N5XSXG1rmrwMJ93TWSH3CBjY/qNMH56jhnfcEWe3Vb1bkHhjBEBOproqCftfxpZSdmXLRN7e5RkXbSWtOf0JnOE5UFPAbb/rLPEnjtETTMmR3dysQIU+39jnRXtGr95M3LNhkpm/rTtGyCBYWzp8P++2eMztuM1fSN6+M="
   on:
