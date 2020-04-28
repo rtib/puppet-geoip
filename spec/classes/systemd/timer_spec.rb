@@ -7,6 +7,10 @@ describe 'geoip' do
       context "on #{os}" do
         let(:facts) { os_facts }
 
+        let(:params) do
+          default_config(os)
+        end
+
         it { is_expected.to compile }
         describe 'add one timer' do
           let(:params) do
