@@ -26,6 +26,14 @@ describe 'geoip' do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
                 .with_content(%r{^ExecStart=/usr/bin/geoipupdate -v /etc/GeoIP.conf$})
             end
+            it do
+              is_expected.to contain_systemd__unit_file('geoip_update.service')
+                .with_content(%r{^StandardOutput=journal$})
+            end
+            it do
+              is_expected.to contain_systemd__unit_file('geoip_update.service')
+                .with_content(%r{^StandardError=journal$})
+            end
           end
           describe 'add one timer' do
             let(:params) do
