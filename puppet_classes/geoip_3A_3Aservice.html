@@ -89,6 +89,7 @@ is configured with <code>geoip::service_name</code>.</p>
 <div class="tags">
   
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -118,7 +119,7 @@ class geoip::service {
     $srv = $facts[&#39;service_provider&#39;]
     case $srv {
       /systemd/: {
-        include geoip::service::systemd
+        contain geoip::systemd::timer
       } # systemd
       default: {
         fail(&quot;unknown service provider (${srv}).&quot;)

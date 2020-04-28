@@ -264,6 +264,12 @@ tool with the configuration file created by this puppet module.</p>
 start the update service named <code>geoip::service_name</code> (defaults
 to <code>geoip_update</code>), which will do the update.</p>
 
+<p>By default, the update service will retry after 5 minutes if the update was
+failed by any reason. This behaviour can be changed via
+<code>geoip::systemd::service::restart</code> and
+<code>geoip::systemd::service::restart_sec</code> defining SystemD restart
+behaviour.</p>
+
 <h3 id="label-Update+scheduling">Update scheduling</h3>
 
 <p>Updates, if handled by SystemD, can be scheduled by setting
