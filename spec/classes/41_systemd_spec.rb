@@ -24,7 +24,15 @@ describe 'geoip' do
             end
             it do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
-                .with_content(%r{^ExecStart=/usr/bin/geoipupdate -v /etc/GeoIP.conf$})
+                .with_content(%r{^ExecStart=/usr/bin/geoipupdate -v -f /etc/GeoIP.conf$})
+            end
+            it do
+              is_expected.to contain_systemd__unit_file('geoip_update.service')
+                .with_content(%r{^Restart=on-abnormal$})
+            end
+            it do
+              is_expected.to contain_systemd__unit_file('geoip_update.service')
+                .with_content(%r{^RestartSec=5min$})
             end
             it do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
