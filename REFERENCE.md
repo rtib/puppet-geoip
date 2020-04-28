@@ -11,7 +11,8 @@
 * [`geoip::config::lt311`](#geoipconfiglt311): This class is creating a GeoIP.conf configuration file for geoipupdate versions < 3.1.1.
 * [`geoip::install`](#geoipinstall): This class implements the installation stage of the module. It should not be called directly.  This will install or remove software packages 
 * [`geoip::service`](#geoipservice): This class implements the service control stage of the module. It should not be called directly.  If `geoip::manage_service` enabled, an upda
-* [`geoip::service::systemd`](#geoipservicesystemd): This class implements the service imlementation for SystemD. It should not be called directly.
+* [`geoip::systemd::service`](#geoipsystemdservice): Controling SystemD service unit for update
+* [`geoip::systemd::timer`](#geoipsystemdtimer): Controll the SystemD Timer unit
 
 ## Classes
 
@@ -313,7 +314,33 @@ This class implements the service control stage of the module. It should not be 
 If `geoip::manage_service` enabled, an update service will be created fitting to the service
 provider available on the node. Service name is configured with `geoip::service_name`.
 
-### geoip::service::systemd
+### geoip::systemd::service
 
-This class implements the service imlementation for SystemD. It should not be called directly.
+This class is creating a serivce unit for SystemD to update GeoIP databases.
+The service is running the geoipupdate ones and retry as configured.
+
+#### Parameters
+
+The following parameters are available in the `geoip::systemd::service` class.
+
+##### `restart`
+
+Data type: `String`
+
+update service retry behaviour
+
+Default value: 'on-failure'
+
+##### `restart_sec`
+
+Data type: `String`
+
+time to wait before retry
+
+Default value: '5min'
+
+### geoip::systemd::timer
+
+This class will create a SystemD timer unit triggering the update service on
+each wallclock timer.
 

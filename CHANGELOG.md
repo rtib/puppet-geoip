@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v2.1.0](https://github.com/rtib/puppet-geoip/tree/v2.1.0) (2020-04-28)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v2.0.0...v2.1.0)
+
+### Added
+
+- direct stdout and stderr to systemd journal [\#22](https://github.com/rtib/puppet-geoip/pull/22) ([rtib](https://github.com/rtib))
+- Restart update service on abnormal termination [\#21](https://github.com/rtib/puppet-geoip/pull/21) ([rtib](https://github.com/rtib))
+
 ## [v2.0.0](https://github.com/rtib/puppet-geoip/tree/v2.0.0) (2020-02-14)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v1.0.1...v2.0.0)
