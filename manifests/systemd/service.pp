@@ -1,9 +1,10 @@
-# @summary A short summary of the purpose of this class
+# @summary Controling SystemD service unit for update
 #
-# A description of what this class does
+# This class is creating a serivce unit for SystemD to update GeoIP databases.
+# The service is running the geoipupdate ones and retry as configured.
 #
-# @example
-#   include geoip::systemd::service
+# @param restart update service retry behaviour
+# @param restart_sec time to wait before retry
 class geoip::systemd::service (
   String $restart = 'on-failure',
   String $restart_sec = '5min',

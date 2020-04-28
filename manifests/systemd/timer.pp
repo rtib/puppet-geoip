@@ -1,9 +1,8 @@
-# @summary A short summary of the purpose of this class
+# @summary Controll the SystemD Timer unit
 #
-# A description of what this class does
+# This class will create a SystemD timer unit triggering the update service on
+# each wallclock timer.
 #
-# @example
-#   include geoip::systemd::timer
 class geoip::systemd::timer {
   if $geoip::update_timers.length > 0 {
     systemd::unit_file{ "${geoip::service_name}.timer":

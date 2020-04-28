@@ -126,6 +126,8 @@ In order to update your databases you may use the `geoipupdate` tool with the co
 
 If you haven't disabled `geoip::manage_service`, you may start the update service named `geoip::service_name` (defaults to `geoip_update`), which will do the update.
 
+By default, the update service will retry after 5 minutes if the update was failed by any reason. This behaviour can be changed via `geoip::systemd::service::restart` and `geoip::systemd::service::restart_sec` defining SystemD restart behaviour.
+
 ### Update scheduling
 
 Updates, if handled by SystemD, can be scheduled by setting `geoip::update_timers` an array of timer descriptions. These timer descriptions apply on systemd timer unit OnCalendar options. For correct syntax of these timestamps see [systemd.time(7)#Parsing Timestamps](https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps).
