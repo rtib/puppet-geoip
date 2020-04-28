@@ -5,7 +5,7 @@
 # @example
 #   include geoip::systemd::service
 class geoip::systemd::service (
-  String $restart = 'on-abnormal',
+  String $restart = 'on-failure',
   String $restart_sec = '5min',
 ) {
   systemd::unit_file{ "${geoip::service_name}.service":
