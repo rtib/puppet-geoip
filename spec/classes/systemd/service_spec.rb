@@ -28,7 +28,7 @@ describe 'geoip' do
           end
           it do
             is_expected.to contain_systemd__unit_file('geoip_update.service')
-              .with_content(%r{^Restart=on-abnormal$})
+              .with_content(%r{^Restart=on-failure$})
           end
           it do
             is_expected.to contain_systemd__unit_file('geoip_update.service')
