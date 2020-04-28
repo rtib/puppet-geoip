@@ -1,16 +1,15 @@
-# This class implements the service imlementation for SystemD. It should not be called directly.
-class geoip::service::systemd {
-  systemd::unit_file{ "${geoip::service_name}.service":
-    ensure  => $geoip::ensure,
-    content => epp('geoip/service_unit.epp'),
-  }
-
+# @summary Controll the SystemD Timer unit
+#
+# This class will create a SystemD timer unit triggering the update service on
+# each wallclock timer.
+#
+class geoip::systemd::timer {
   if $geoip::update_timers.length > 0 {
     systemd::unit_file{ "${geoip::service_name}.timer":
       ensure  => $geoip::ensure,
       content => epp('geoip/timer_unit.epp'),
     }
-    ~> service { "${geoip::service_name}.timer":
+    -> service { "${geoip::service_name}.timer":
       ensure => 'running',
       enable => true,
     }

@@ -13,7 +13,7 @@ describe 'geoip' do
             default_config(os)
           end
 
-          it { is_expected.to contain_class('geoip::service::systemd') }
+          it { is_expected.to contain_class('geoip::systemd::timer') }
         end
 
         describe 'with init' do
