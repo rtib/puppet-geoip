@@ -7,7 +7,7 @@ class geoip::service {
     $srv = $facts['service_provider']
     case $srv {
       /systemd/: {
-        include geoip::service::systemd
+        contain geoip::systemd::timer
       } # systemd
       default: {
         fail("unknown service provider (${srv}).")

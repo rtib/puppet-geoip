@@ -6,4 +6,14 @@ class geoip::config {
   class { "geoip::config::${geoip::config_version}":
     * => $geoip::config,
   }
+
+  $srv = $facts['service_provider']
+  case $srv {
+    /systemd/: {
+      contain geoip::systemd::service
+    }
+    default: {
+      warn("unknown service provider (${srv}).")
+    } # default
+  }
 }
