@@ -5,7 +5,7 @@
 Description=GeoIP update service
 
 [Service]
-Type=oneshot
+Type=exec
 ExecStart=<%= $geoip::update_path %> -v -f <%= $geoip::config_path %>
 Restart=<%= $geoip::systemd::service::restart %>
 RestartSec=<%= $geoip::systemd::service::restart_sec %>

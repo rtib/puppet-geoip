@@ -20,7 +20,7 @@ describe 'geoip' do
           end
           it do
             is_expected.to contain_systemd__unit_file('geoip_update.service')
-              .with_content(%r{^Type=oneshot$})
+              .with_content(%r{^Type=exec$})
           end
           it do
             is_expected.to contain_systemd__unit_file('geoip_update.service')
