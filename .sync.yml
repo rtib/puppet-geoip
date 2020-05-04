@@ -15,8 +15,6 @@ Rakefile:
   litmus:
     provision_list:
       - ---travis_el
-    puppet_collection: 
-      - ---puppet5
 Gemfile:
   optional:
     ':development':
