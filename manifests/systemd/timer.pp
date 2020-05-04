@@ -9,7 +9,7 @@ class geoip::systemd::timer {
       ensure  => $geoip::ensure,
       content => epp('geoip/timer_unit.epp'),
     }
-    -> service { "${geoip::service_name}.timer":
+    ~> service { "${geoip::service_name}.timer":
       ensure => 'running',
       enable => true,
     }
