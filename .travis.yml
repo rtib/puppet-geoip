@@ -65,7 +65,9 @@ jobs:
       stage: deploy
   allow_failures:
     -
-      stage: acceptance
+      env: PLATFORMS=travis_deb_puppet5
+    -
+      env: PLATFORMS=travis_deb_puppet6
 branches:
   only:
     - master

@@ -16,7 +16,8 @@ Rakefile:
     provision_list:
       - ---travis_el
   allow_failures:
-    - stage: acceptance
+    - env: PLATFORMS=travis_deb_puppet5
+    - env: PLATFORMS=travis_deb_puppet6
 Gemfile:
   optional:
     ':development':
