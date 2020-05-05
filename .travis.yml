@@ -63,6 +63,11 @@ jobs:
     -
       env: DEPLOY_TO_FORGE=yes
       stage: deploy
+  allow_failures:
+    -
+      env: PLATFORMS=travis_deb_puppet5
+    -
+      env: PLATFORMS=travis_deb_puppet6
 branches:
   only:
     - master
