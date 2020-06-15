@@ -14,8 +14,24 @@ describe 'geoip' do
           end
 
           it { is_expected.to contain_class("geoip::config::#{config_for(os)[:class]}") }
+          it { is_expected.to contain_class('geoip::systemd::service') }
         end
       end
     end # on_supported_os.each
+
+    context 'on unsupported os' do
+      let(:facts) do
+        {
+          service_provider: 'foobar',
+        }
+      end
+      let(:params) do
+        default_config('unsupported-os')
+      end
+
+      it 'raise a warning' do
+        expect { catalogue }.to raise_error(Puppet::PreformattedError, %r{unknown service provider \(foobar\).})
+      end
+    end
   end
 end # describe 'geoip'

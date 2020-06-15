@@ -13,7 +13,7 @@ class geoip::config {
       contain geoip::systemd::service
     }
     default: {
-      warn("unknown service provider (${srv}).")
+      warning("unknown service provider (${srv}).")
     } # default
   }
 }
