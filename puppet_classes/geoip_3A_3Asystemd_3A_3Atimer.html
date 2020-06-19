@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip::systemd::timer
   
-    &mdash; Documentation by YARD 0.9.24
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
@@ -123,7 +123,7 @@ class geoip::systemd::timer {
       ensure  =&gt; $geoip::ensure,
       content =&gt; epp(&#39;geoip/timer_unit.epp&#39;),
     }
-    -&gt; service { &quot;${geoip::service_name}.timer&quot;:
+    ~&gt; service { &quot;${geoip::service_name}.timer&quot;:
       ensure =&gt; &#39;running&#39;,
       enable =&gt; true,
     }
