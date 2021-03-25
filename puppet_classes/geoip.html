@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip
   
-    &mdash; Documentation by YARD 0.9.25
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
@@ -244,6 +244,40 @@ proxy settings to get to the internet.</p>
   
     <li>
       
+        <span class='name'>service_user</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;root&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>effective user the update service should run</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>serivce_group</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>effective group the update service should run</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>update_path</span>
       
       
@@ -319,6 +353,19 @@ href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#Accura
       
     </li>
   
+    <li>
+      
+        <span class='name'>service_group</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;root&#39;</tt>)</em>
+      
+      
+    </li>
+  
 </ul>
 
 
@@ -330,8 +377,6 @@ href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#Accura
         <pre class="lines">
 
 
-37
-38
 39
 40
 41
@@ -350,10 +395,14 @@ href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#Accura
 54
 55
 56
-57</pre>
+57
+58
+59
+60
+61</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 37</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 39</span>
 
 class geoip (
   Enum[&#39;present&#39;, &#39;absent&#39;] $ensure = &#39;present&#39;,
@@ -363,6 +412,8 @@ class geoip (
   Enum[&#39;lt311&#39;,&#39;ge311&#39;]     $config_version = &#39;lt311&#39;,
   Hash                      $config = {},
   Boolean                   $manage_service = true,
+  String                    $service_user = &#39;root&#39;,
+  String                    $service_group = &#39;root&#39;,
   Stdlib::Absolutepath      $update_path = &#39;/usr/bin/geoipupdate&#39;,
   String                    $service_name = &#39;geoip_update&#39;,
   Array[String]             $update_timers = [],
