@@ -111,3 +111,7 @@ jobs:
 
       - name: Running acceptance tests
         run: bundle exec rake 'litmus:acceptance:parallel'
+        env:
+          MM_USERID: ${{ secrets.MM_USERID }}
+          MM_LICENSEKEY_LT311: ${{ secrets.MM_LICENSEKEY_LT311 }}
+          MM_LICENSEKEY_GE311: ${{ secrets.MM_LICENSEKEY_GE311}}
