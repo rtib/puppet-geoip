@@ -56,10 +56,10 @@ describe 'geoip' do
 
         context 'alternate user/group config' do
           let(:params) do
-            default_config(os).merge({
+            default_config(os).merge(
               'service_user'  => 'geo_user',
-              'service_group' => 'geo_group'
-            })
+              'service_group' => 'geo_group',
+            )
           end
 
           it { is_expected.to compile }
