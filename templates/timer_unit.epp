@@ -8,6 +8,7 @@ Description=Timer for GeoIP update
 <% $geoip::update_timers.each |String $value| { -%>
 OnCalendar=<%= $value %>
 <% } -%>
+Persistent=true
 AccuracySec=<%= $geoip::update_scatter %>
 
 [Install]
