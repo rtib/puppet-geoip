@@ -3,7 +3,7 @@
 include PuppetLitmus
 
 # constants
-DBS = ['GeoLite2-ASN', 'GeoLite2-Country', 'GeoLite2-City'].freeze
+DBS = ['GeoLite2-ASN', 'GeoLite2-Country', 'GeoLite2-City']
 
 node_facts = facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST']) || {}
 
