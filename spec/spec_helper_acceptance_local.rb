@@ -7,7 +7,7 @@ DBS = ['GeoLite2-ASN', 'GeoLite2-Country', 'GeoLite2-City'].freeze
 
 node_facts = facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST']) || {}
 
-if node_facts['platform'] =~ %r{debian}
+if node_facts['platform'].include?('debian')
   run_shell('cat /etc/apt/sources.list | cut -d" " -f-3 | sed "s/$/ contrib non-free/g" > /etc/apt/sources.list.d/extra.list')
   run_shell('apt-get update')
 end
