@@ -27,12 +27,6 @@
       "operatingsystemrelease": [
         "10"
       ]
-    },
-    {
-      "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [
-        "20.04"
-      ]
     }
   ],
   "requirements": [
