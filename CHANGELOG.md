@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.0.0](https://github.com/rtib/puppet-geoip/tree/v3.0.0) (2021-05-03)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v2.2.0...v3.0.0)
+
+### Changed
+
+- update requirements and dependencies - drop Puppet 5 [\#29](https://github.com/rtib/puppet-geoip/pull/29) ([rtib](https://github.com/rtib))
+
 ## [v2.2.0](https://github.com/rtib/puppet-geoip/tree/v2.2.0) (2021-03-25)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v2.1.1...v2.2.0)
