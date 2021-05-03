@@ -30,7 +30,7 @@
 # @param config hash of configuration options
 # @param manage_service whether to manage database updating service
 # @param service_user effective user the update service should run
-# @param serivce_group effective group the update service should run
+# @param service_group effective group the update service should run
 # @param update_path path to the geoipupdate tool, used by update service
 # @param service_name name of the update service
 # @param update_timers wallclock timers when the update service should be triggered (for syntax see [systemd.time(7)#Parsing Timestamps](https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps))
