@@ -30,7 +30,7 @@ jobs:
         run: bundle exec matrix_from_metadata_v2
 
   static:
-    name: static checks
+    name: Static checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
