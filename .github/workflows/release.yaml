@@ -15,7 +15,7 @@ jobs:
       - name: setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5.7
+          ruby-version: 2.7
 
       - name: Prepare environment
         run: |
@@ -25,7 +25,9 @@ jobs:
           git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
 
       - name: Update Reference.md
-        run: bundle exec rake strings:generate:reference
+        run: |
+          bundle exec rake strings:gh_pages:update
+          bundle exec rake strings:generate:reference
 
       - name: Update Changelog.md
         run: bundle exec rake changelog
