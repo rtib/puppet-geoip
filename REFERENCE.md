@@ -60,12 +60,11 @@ The following parameters are available in the `geoip` class:
 * [`config`](#config)
 * [`manage_service`](#manage_service)
 * [`service_user`](#service_user)
-* [`serivce_group`](#serivce_group)
+* [`service_group`](#service_group)
 * [`update_path`](#update_path)
 * [`service_name`](#service_name)
 * [`update_timers`](#update_timers)
 * [`update_scatter`](#update_scatter)
-* [`service_group`](#service_group)
 
 ##### <a name="ensure"></a>`ensure`
 
@@ -131,9 +130,13 @@ effective user the update service should run
 
 Default value: `'root'`
 
-##### <a name="serivce_group"></a>`serivce_group`
+##### <a name="service_group"></a>`service_group`
+
+Data type: `String`
 
 effective group the update service should run
+
+Default value: `'root'`
 
 ##### <a name="update_path"></a>`update_path`
 
@@ -166,14 +169,6 @@ Data type: `Integer`
 a time window in seconds of randomized, host specific delay of the update trigger (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=))
 
 Default value: `1800`
-
-##### <a name="service_group"></a>`service_group`
-
-Data type: `String`
-
-
-
-Default value: `'root'`
 
 ### <a name="geoipconfig"></a>`geoip::config`
 
