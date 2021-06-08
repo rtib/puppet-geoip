@@ -5,7 +5,7 @@
 Description=GeoIP update service
 
 [Service]
-<% if $facts['systemd_version'] >= 240 { -%>
+<% if $facts['systemd_version'].to_i >= 240 { -%>
 Type=exec
 <% } else { -%>
 Type=oneshot
@@ -13,7 +13,7 @@ Type=oneshot
 User=<%= $geoip::service_user %>
 Group=<%= $geoip::service_group %>
 ExecStart=<%= $geoip::update_path %> -v -f <%= $geoip::config_path %>
-<% if $facts['systemd_version'] >= 240 { -%>
+<% if $facts['systemd_version'].to_i >= 240 { -%>
 Restart=<%= $geoip::systemd::service::restart %>
 RestartSec=<%= $geoip::systemd::service::restart_sec %>
 <% } -%>
