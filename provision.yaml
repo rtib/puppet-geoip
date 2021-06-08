@@ -2,3 +2,6 @@
 debian:
   provisioner: docker
   images: ['litmusimage/debian:10']
+centos:
+  provisioner: docker
+  images: ['litmusimage/centos:7', 'litmusimage/centos:8']

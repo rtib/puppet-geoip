@@ -1,0 +1,4 @@
+geoip::packages:
+  - libmaxminddb-devel
+  - geoipupdate
+geoip::config_version: lt311
