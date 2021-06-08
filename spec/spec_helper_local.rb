@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rspec-puppet-facts'
 include RspecPuppetFacts
 
@@ -29,11 +30,11 @@ def config_for(os)
   end
 end
 
-add_custom_fact :systemd_version, ->(os, facts) {
+add_custom_fact :systemd_version, ->(_os, facts) {
   case facts[:os]['family']
-  when /(redhat|centos)-7-x86_64/
+  when %r{(redhat|centos)-7-x86_64}
     219
-  when /(redhat|centos)-8-x86_64/
+  when %r{(redhat|centos)-8-x86_64}
     239
   else
     240
