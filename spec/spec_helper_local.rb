@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'rspec-puppet-facts'
+include RspecPuppetFacts
+
 TEST_CONFIG_LT311 = {
   'config' => {
     'userid'     => '999999',
@@ -26,3 +29,14 @@ def config_for(os)
     { name: '< 3.1.1', class: 'lt311', config: TEST_CONFIG_LT311 }
   end
 end
+
+add_custom_fact :systemd_version, ->(_os, facts) {
+  case facts[:os]['family']
+  when %r{(redhat|centos)-7-x86_64}
+    219
+  when %r{(redhat|centos)-8-x86_64}
+    239
+  else
+    240
+  end
+}

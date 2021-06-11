@@ -19,9 +19,16 @@ describe 'geoip' do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
                 .with('ensure' => 'present')
             end
-            it do
-              is_expected.to contain_systemd__unit_file('geoip_update.service')
-                .with_content(%r{^Type=exec$})
+            if os_facts['systemd_version'] >= 240
+              it do
+                is_expected.to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^Type=exec$})
+              end
+            else
+              it do
+                is_expected.to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^Type=oneshot$})
+              end
             end
             it do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
@@ -35,13 +42,24 @@ describe 'geoip' do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
                 .with_content(%r{^ExecStart=/usr/bin/geoipupdate -v -f /etc/GeoIP.conf$})
             end
-            it do
-              is_expected.to contain_systemd__unit_file('geoip_update.service')
-                .with_content(%r{^Restart=on-failure$})
-            end
-            it do
-              is_expected.to contain_systemd__unit_file('geoip_update.service')
-                .with_content(%r{^RestartSec=5min$})
+            if os_facts['systemd_version'] >= 240
+              it do
+                is_expected.to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^Restart=on-failure$})
+              end
+              it do
+                is_expected.to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^RestartSec=5min$})
+              end
+            else
+              it do
+                is_expected.not_to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^Restart=on-failure$})
+              end
+              it do
+                is_expected.not_to contain_systemd__unit_file('geoip_update.service')
+                  .with_content(%r{^RestartSec=5min$})
+              end
             end
             it do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
