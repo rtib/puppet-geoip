@@ -7,10 +7,8 @@ defaults:  # Used for any hierarchy level that omits these keys.
 
 hierarchy:
   - name: 'Full Version'
-    path: '%{facts.os.name}-%{facts.os.release.full}.yaml'
+    path: '%{facts.os.family}-%{facts.os.release.full}.yaml'
   - name: 'Major Version'
-    path: '%{facts.os.name}-%{facts.os.release.major}.yaml'
+    path: '%{facts.os.family}-%{facts.os.release.major}.yaml'
   - name: 'Distribution Name'
     path: '%{facts.os.name}.yaml'
-  - name: 'OS Family Major Version'
-    path: '%{facts.os.family}-%{facts.os.release.major}.yaml'
