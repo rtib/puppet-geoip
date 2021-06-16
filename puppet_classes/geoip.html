@@ -75,15 +75,9 @@
 <div class="docstring">
   <div class="discussion">
     
-<p>The geoip module installs tools and databases GeoIP resolution from
-MaxMind.</p>
+<p>The geoip module installs tools and databases GeoIP resolution from MaxMind.</p>
 
-<p>You may replace userid and licensekey with your subscription and add the
-productids you want to sync. Leaving these options on default will allow
-you to sync all free available databases. With database_directory the
-destination directory of the databases can be set, protocol, proxy* and
-*_verification may only be needed in the case your host needs some specific
-proxy settings to get to the internet.</p>
+<p>You may replace userid and licensekey with your subscription and add the productids you want to sync. Leaving these options on default will allow you to sync all free available databases. With database_directory the destination directory of the databases can be set, protocol, proxy* and *_verification may only be needed in the case your host needs some specific proxy settings to get to the internet.</p>
 
   </div>
 </div>
@@ -262,11 +256,13 @@ proxy settings to get to the internet.</p>
   
     <li>
       
-        <span class='name'>serivce_group</span>
+        <span class='name'>service_group</span>
       
       
-        <span class='type'></span>
+        <span class='type'>(<tt>String</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>&#39;root&#39;</tt>)</em>
       
       
         &mdash;
@@ -325,10 +321,7 @@ proxy settings to get to the internet.</p>
       
         &mdash;
         <div class='inline'>
-<p>wallclock timers when the update service should be triggered (for syntax
-see <a
-href="https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps">systemd.time(7)#Parsing
-Timestamps</a>)</p>
+<p>wallclock timers when the update service should be triggered (for syntax see <a href="https://www.freedesktop.org/software/systemd/man/systemd.time.html#Parsing%20Timestamps">systemd.time(7)#Parsing Timestamps</a>)</p>
 </div>
       
     </li>
@@ -346,23 +339,8 @@ Timestamps</a>)</p>
       
         &mdash;
         <div class='inline'>
-<p>a time window in seconds of randomized, host specific delay of the update
-trigger (see <a
-href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=">systemd.timer(5)#AccuracySec</a>)</p>
+<p>a time window in seconds of randomized, host specific delay of the update trigger (see <a href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=">systemd.timer(5)#AccuracySec</a>)</p>
 </div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>service_group</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>&#39;root&#39;</tt>)</em>
-      
       
     </li>
   
