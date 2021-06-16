@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.1.0](https://github.com/rtib/puppet-geoip/tree/v3.1.0) (2021-06-16)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.0.1...v3.1.0)
+
+### Added
+
+- Support EL7 and EL8 [\#31](https://github.com/rtib/puppet-geoip/pull/31) ([treydock](https://github.com/treydock))
+
 ## [v3.0.1](https://github.com/rtib/puppet-geoip/tree/v3.0.1) (2021-05-26)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.0.0...v3.0.1)
