@@ -19,7 +19,7 @@ describe 'geoip' do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
                 .with('ensure' => 'present')
             end
-            if os_facts['systemd_version'] >= 240
+            if Gem::Version.new(os_facts['systemd_version']) >= Gem::Version.new('240')
               it do
                 is_expected.to contain_systemd__unit_file('geoip_update.service')
                   .with_content(%r{^Type=exec$})
@@ -42,7 +42,7 @@ describe 'geoip' do
               is_expected.to contain_systemd__unit_file('geoip_update.service')
                 .with_content(%r{^ExecStart=/usr/bin/geoipupdate -v -f /etc/GeoIP.conf$})
             end
-            if os_facts['systemd_version'] >= 240
+            if Gem::Version.new(os_facts['systemd_version']) >= Gem::Version.new('240')
               it do
                 is_expected.to contain_systemd__unit_file('geoip_update.service')
                   .with_content(%r{^Restart=on-failure$})
