@@ -5,7 +5,7 @@
 Description=GeoIP update service
 
 [Service]
-<% if Integer($facts['systemd_version']) >= 240 { -%>
+<% if Integer($facts['systemd_version'].lest || { '0' }) >= 240 { -%>
 Type=exec
 Restart=<%= $geoip::systemd::service::restart %>
 RestartSec=<%= $geoip::systemd::service::restart_sec %>
