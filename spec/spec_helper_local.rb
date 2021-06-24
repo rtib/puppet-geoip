@@ -33,10 +33,10 @@ end
 add_custom_fact :systemd_version, ->(_os, facts) {
   case facts[:os]['family']
   when %r{(redhat|centos)-7-x86_64}
-    219
+    '219'
   when %r{(redhat|centos)-8-x86_64}
-    239
+    '239'
   else
-    240
+    '240'
   end
 }
