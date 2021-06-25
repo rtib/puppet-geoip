@@ -6,9 +6,13 @@ defaults:  # Used for any hierarchy level that omits these keys.
   data_hash: yaml_data  # Use the built-in YAML backend.
 
 hierarchy:
-  - name: 'Full Version'
+  - name: 'Operating System Full Version'
+    path: '%{facts.os.name}-%{facts.os.release.full}.yaml'
+  - name: 'Operating System Major Version'
+    path: '%{facts.os.name}-%{facts.os.release.major}.yaml'
+  - name: 'Operating System Family Full Version'
     path: '%{facts.os.family}-%{facts.os.release.full}.yaml'
-  - name: 'Major Version'
+  - name: 'Operating System Family Major Version'
     path: '%{facts.os.family}-%{facts.os.release.major}.yaml'
   - name: 'Distribution Name'
     path: '%{facts.os.name}.yaml'

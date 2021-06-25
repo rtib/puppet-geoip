@@ -23,16 +23,24 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "10"
       ]
     },
     {
-      "operatingsystem": "CentOS",
+      "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "7",
-        "8"
+        "16.04",
+        "18.04",
+        "20.04"
       ]
     }
   ],
