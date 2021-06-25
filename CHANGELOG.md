@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.2.0](https://github.com/rtib/puppet-geoip/tree/v3.2.0) (2021-06-25)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.1.0...v3.2.0)
+
+### Added
+
+- Add Ubuntu as a supported system [\#33](https://github.com/rtib/puppet-geoip/pull/33) ([smortex](https://github.com/smortex))
+
+### Fixed
+
+- Unbreak catalog compilation when systemd\_version is undef [\#32](https://github.com/rtib/puppet-geoip/pull/32) ([smortex](https://github.com/smortex))
+
 ## [v3.1.0](https://github.com/rtib/puppet-geoip/tree/v3.1.0) (2021-06-16)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.0.1...v3.1.0)
