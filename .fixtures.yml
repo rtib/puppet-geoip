@@ -3,8 +3,6 @@ fixtures:
   forge_modules:
     'stdlib':
       repo: 'puppetlabs/stdlib'
-    'concat':
-      repo: 'puppetlabs/concat'
     'systemd':
       repo: 'camptocamp/systemd'
   repositories:
