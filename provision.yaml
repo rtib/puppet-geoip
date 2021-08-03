@@ -1,4 +1,0 @@
----
-debian:
-  provisioner: docker
-  images: ['litmusimage/debian:10']
