@@ -1,5 +1,5 @@
 ---
-name: CI
+name: CI-spec
 on:
   pull_request:
     branches: [ main ]
@@ -57,39 +57,3 @@ jobs:
 
       - name: Spec tests
         run: bundle exec rake parallel_spec
-
-  acceptance:
-    needs: setup_matrix
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJson(needs.setup_matrix.outputs.acceptance_matrix) }}
-    name: Litmus tests for ${{ matrix.platforms.label }} with ${{ matrix.collection }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-
-      - name: Prepare environment
-        run: |
-          bundle config set --local with 'system_tests'
-          bundle install
-
-      - name: Provision test environment
-        run: bundle exec rake 'litmus:provision[${{ matrix.platforms.provider }},${{ matrix.platforms.image }}]'
-
-      - name: Install Agent
-        run: bundle exec rake 'litmus:install_agent[${{ matrix.collection }}]'
-
-      - name: Install Module
-        run: bundle exec rake 'litmus:install_module'
-
-      - name: Running acceptance tests
-        run: bundle exec rake 'litmus:acceptance:parallel'
-        env:
-          MM_USERID: ${{ secrets.MM_USERID }}
-          MM_LICENSEKEY_LT311: ${{ secrets.MM_LICENSEKEY_LT311 }}
-          MM_LICENSEKEY_GE311: ${{ secrets.MM_LICENSEKEY_GE311}}
