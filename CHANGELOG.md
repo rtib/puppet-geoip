@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.0.0](https://github.com/rtib/puppet-geoip/tree/v4.0.0) (2021-09-02)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.2.1...v4.0.0)
+
+### Changed
+
+- \[BREAKING\] change dependencies [\#37](https://github.com/rtib/puppet-geoip/pull/37) ([rtib](https://github.com/rtib))
+
+### Added
+
+- add support for Debian-11 [\#38](https://github.com/rtib/puppet-geoip/pull/38) ([rtib](https://github.com/rtib))
+
 ## [v3.2.1](https://github.com/rtib/puppet-geoip/tree/v3.2.1) (2021-08-03)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v3.2.0...v3.2.1)
