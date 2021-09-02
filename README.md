@@ -4,7 +4,7 @@ Project state:
 
 GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) [![GitHub license](https://img.shields.io/github/license/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/blob/master/LICENSE) [![GitHub](https://img.shields.io/github/last-commit/rtib/puppet-geoip)](https://github.com/rtib/puppet-geoip/commits/master) [![GitHub tag](https://img.shields.io/github/tag/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/releases)
 
-Workflows: [![CI](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml) [![release](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml)
+Nightly-CI-Workflows: [![CI-spec](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml) [![CI-acceptance](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml)
 
 Puppet Forge: [![PDK Version](https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
 
