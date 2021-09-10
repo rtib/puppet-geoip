@@ -15,7 +15,7 @@ end
 def config_ge311?
   node_facts = facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST']) || {}
   case node_facts['platform']
-  when %r{debian:10}, %r{ubuntu:20\.04}
+  when %r{debian:1[01]}, %r{ubuntu:20\.04}
     true
   else
     false

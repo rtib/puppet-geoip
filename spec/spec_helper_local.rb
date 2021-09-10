@@ -23,7 +23,7 @@ end
 
 def config_for(os)
   case os
-  when 'debian-10-x86_64', 'ubuntu-20.04-x86_64'
+  when 'debian-10-x86_64', 'debian-11-x86_64', 'ubuntu-20.04-x86_64'
     { name: '>= 3.1.1', class: 'ge311', config: TEST_CONFIG_GE311 }
   else
     { name: '< 3.1.1', class: 'lt311', config: TEST_CONFIG_LT311 }
