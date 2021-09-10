@@ -1,6 +1,6 @@
 {
   "name": "trepasi-geoip",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "T. Repasi",
   "summary": "Install tools and update process for GeoIP database.",
   "license": "Apache-2.0",
