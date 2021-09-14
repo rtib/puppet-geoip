@@ -1,42 +1,43 @@
 # geoip
 
-Project state:
+## Project status
 
-GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) [![GitHub license](https://img.shields.io/github/license/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/blob/master/LICENSE) [![GitHub](https://img.shields.io/github/last-commit/rtib/puppet-geoip)](https://github.com/rtib/puppet-geoip/commits/master) [![GitHub tag](https://img.shields.io/github/tag/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/releases)
+GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) ![GitHub tag](https://img.shields.io/github/commit-activity/y/rtib/puppet-geoip) ![GitHub](https://img.shields.io/github/last-commit/rtib/puppet-geoip)
 
-Nightly-CI-Workflows: [![CI-spec](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml) [![CI-acceptance](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml)
+Nightly Workflows: [![CI-spec](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml) [![CI-acceptance](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml/badge.svg?branch=main)](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml)
 
-Puppet Forge: [![PDK Version](https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
+Puppet Forge: ![PDK Version](https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg) [![release](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml) [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip) 
 
 ## Table of Contents
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=3 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [geoip](#geoip)
-  - [Table of Contents](#table-of-contents)
-  - [Description](#description)
-  - [Setup](#setup)
-    - [What geoip affects](#what-geoip-affects)
-    - [Setup Requirements](#setup-requirements)
-    - [Beginning with geoip](#beginning-with-geoip)
-  - [Usage](#usage)
-    - [Configuring versions less than 3.1.1](#configuring-versions-less-than-311)
-    - [Configuring versions 3.1.1 and later](#configuring-versions-311-and-later)
-    - [Upgrading to 3.1.1 or later](#upgrading-to-311-or-later)
-    - [Updating databases](#updating-databases)
-    - [Update scheduling](#update-scheduling)
-  - [Reference](#reference)
-  - [Development](#development)
-  - [Copyright](#copyright)
+- [Project status](#project-status)
+- [Table of Contents](#table-of-contents)
+- [Description](#description)
+- [Setup](#setup)
+  - [What geoip affects](#what-geoip-affects)
+  - [Setup Requirements](#setup-requirements)
+  - [Beginning with geoip](#beginning-with-geoip)
+- [Usage](#usage)
+  - [Configuring versions less than 3.1.1](#configuring-versions-less-than-311)
+  - [Configuring versions 3.1.1 and later](#configuring-versions-311-and-later)
+  - [Upgrading to 3.1.1 or later](#upgrading-to-311-or-later)
+  - [Updating databases](#updating-databases)
+  - [Update scheduling](#update-scheduling)
+- [Reference](#reference)
+- [Limitations](#limitations)
+- [Development](#development)
+- [Copyright](#copyright)
 
 <!-- /code_chunk_output -->
 
 ## Description
 
 This Puppet module installs and maintains tools and processes to use GeoIP databases
-from MaxMind. These include the lookup tools for lookup and update the databases. It will manage the configuration for the
+from [MaxMind][1]. These include the lookup tools for lookup and update the databases. It will manage the configuration for the
 update tool which enables to set up your subscription settings, product IDs and other
 settings, e.g. proxy settings. If systemd is available, a service is defined in order
 to enable a seamless update process.
@@ -59,14 +60,14 @@ about the availability of the packages. The list of the packages to be installed
 The only thing to start with geoip is to include the class in the manifest of your nodes.
 
 ```puppet
-include geoip
+contain geoip
 ```
 
 All configuration parameter can be assigned hiera. The default values are also lookuped up by hiera using the database shipped with the module.
 
 ## Usage
 
-All configuration parameter can be set using hiera. Note, that MaxMind does not allow to download databases without subscription, but there is a free tier which can be used to download three GeoLite2 databases.
+Note, that MaxMind does not allow to download databases without subscription, but there is a free tier which can be used to download three GeoLite2 databases.
 
 The configuration depends on the version of the `geoipupdate` tool to use, as there is a difference between versions starting at 3.1.1 and the older ones. The module referns to these settings via parameter `geoip::config_version` using the value `lt311` for versions less than 3.1.1 and value `ge311` for version greater or equal to 3.1.1.
 
@@ -133,14 +134,35 @@ Updates, if handled by SystemD, can be scheduled by setting `geoip::update_timer
 
 The parameter `geoip::update_scatter` defines the seconds for systemd timer AccuracySec option (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=)) to prevent multiple nodes to update at the same time.
 
+
 ## Reference
 
-Generated reference documentation is available at [https://rtib.github.io/puppet-geoip/](https://rtib.github.io/puppet-geoip/).
+Automatically generated reference documentation is available in the [REFERENCE.md][2] file or at [https://rtib.github.io/puppet-geoip/][3].
+
+## Limitations
+
+For supported operating systems and dependencies, see [metadata.json](https://github.com/rtib/puppet-cassandra/blob/main/metadata.json).
+
+Extensive itegration tests are run nightly to assure quality  and compatibility with next releases.
 
 ## Development
 
-According to its license, you are free to contribute changes to this module. You may aware of the general workflows when contributing to GitHub projects, if not yet, please read CONTRIBUTING.md.
+The module is developed using recent [Puppet Development Kit][4], [validated][5] and extensively tested using [Puppet Litmus][6]. Automated workflows, implemented with [GitHub Actions][7] are run on demand and nightly, doing validation, spec tests and continuous integration tests.
+
+Note, that [CI-Acceptance](https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml) workflow is not applied to pull requests automatically, as it needs credentials setup as secrets to work. A pull request, however, will only be merged if these tests also succeed.
+
+As an open project, you are welcome to contribute to this module. Currently, there is no contribution guide specific to this module, general information about the workflow may apply. In case of questions feel free to open a issue or join community Slack channels #forge-modules, #puppet, #puppet-dev, #testing on slack.puppet.com.
+
+Issues and pull requests will be addressed in a timely manner, according to community best practice. Releases are going to be published on demand, after having merged an set of sufficiently important changes and all tests succeeded. There may be automated rule enforcement in place to provide a healthy issue lifecycle.
 
 ## Copyright
 
-This product is tested using GeoLite2 data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com).
+This product is tested using GeoLite2 data created by MaxMind, available from [https://www.maxmind.com][1].
+
+[1]: https://www.maxmind.com
+[2]: https://github.com/rtib/puppet-geoip/blob/main/REFERENCE.md
+[3]: https://rtib.github.io/puppet-geoip/
+[4]: https://puppet.com/docs/pdk/2.x/pdk.html
+[5]: https://puppet.com/docs/pdk/1.x/pdk_testing.html
+[6]: https://github.com/puppetlabs/puppet_litmus
+[7]: https://docs.github.com/en/actions
