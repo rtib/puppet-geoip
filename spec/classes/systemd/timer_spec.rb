@@ -14,9 +14,11 @@ describe 'geoip' do
         it { is_expected.to compile }
         describe 'add one timer' do
           let(:params) do
-            default_config(os).merge(
-              'update_timers' => ['Mon..Fri *-*-* 06:30:00'],
-            )
+            default_config(os).merge({
+                                       update_timers: ['Mon..Fri *-*-* 06:30:00'],
+                systemd_config: 'unit',
+                service_name: 'geoip_update'
+                                     })
           end
 
           context 'systemd timer file contents' do
@@ -37,10 +39,12 @@ describe 'geoip' do
 
         describe 'add multiple timers' do
           let(:params) do
-            default_config(os).merge(
-              'update_timers' => ['Mon..Fri *-*-* 06:30:00', 'Mon..Fri *-*-* 18:30:00'],
-              'update_scatter' => 300,
-            )
+            default_config(os).merge({
+                                       update_timers: ['Mon..Fri *-*-* 06:30:00', 'Mon..Fri *-*-* 18:30:00'],
+              update_scatter: 300,
+              systemd_config: 'unit',
+              service_name: 'geoip_update'
+                                     })
           end
 
           context 'systemd timer file contents' do
