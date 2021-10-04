@@ -143,7 +143,24 @@
 13
 14
 15
-16</pre>
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/systemd/service.pp', line 8</span>
@@ -152,9 +169,26 @@ class geoip::systemd::service (
   String $restart = &#39;on-failure&#39;,
   String $restart_sec = &#39;5min&#39;,
 ) {
-  systemd::unit_file{ &quot;${geoip::service_name}.service&quot;:
-    ensure  =&gt; $geoip::ensure,
-    content =&gt; epp(&#39;geoip/service_unit.epp&#39;),
+  if $geoip::systemd_config == &#39;unit&#39; {
+    systemd::unit_file{ &quot;${geoip::service_name}.service&quot;:
+      ensure  =&gt; $geoip::ensure,
+      content =&gt; epp(&#39;geoip/service_unit.epp&#39;),
+    }
+  } elsif $geoip::systemd_config == &#39;dropin&#39; {
+    systemd::dropin_file { &#39;10-exec.conf&#39;:
+      unit    =&gt; &quot;${geoip::service_name}.service&quot;,
+      content =&gt; epp(&#39;geoip/service_dropin_10.epp&#39;),
+    }
+    systemd::dropin_file { &#39;20-user-log.conf&#39;:
+      unit    =&gt; &quot;${geoip::service_name}.service&quot;,
+      content =&gt; epp(&#39;geoip/service_dropin_20.epp&#39;),
+    }
+    if versioncmp($facts[&#39;systemd_version&#39;], &#39;240&#39;) &gt;= 0 {
+      systemd::dropin_file { &#39;30-restart.conf&#39;:
+        unit    =&gt; &quot;${geoip::service_name}.service&quot;,
+        content =&gt; epp(&#39;geoip/service_dropin_30.epp&#39;),
+      }
+    }
   }
 }</pre>
       </td>

@@ -238,6 +238,24 @@
   
     <li>
       
+        <span class='name'>systemd_config</span>
+      
+      
+        <span class='type'>(<tt>Enum['unit', 'dropin']</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;unit&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of configuration how changes are applied to systemd</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>service_user</span>
       
       
@@ -355,7 +373,6 @@
         <pre class="lines">
 
 
-39
 40
 41
 42
@@ -377,10 +394,12 @@
 58
 59
 60
-61</pre>
+61
+62
+63</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 39</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 40</span>
 
 class geoip (
   Enum[&#39;present&#39;, &#39;absent&#39;] $ensure = &#39;present&#39;,
@@ -390,6 +409,7 @@ class geoip (
   Enum[&#39;lt311&#39;,&#39;ge311&#39;]     $config_version = &#39;lt311&#39;,
   Hash                      $config = {},
   Boolean                   $manage_service = true,
+  Enum[&#39;unit&#39;, &#39;dropin&#39;]    $systemd_config = &#39;unit&#39;,
   String                    $service_user = &#39;root&#39;,
   String                    $service_group = &#39;root&#39;,
   Stdlib::Absolutepath      $update_path = &#39;/usr/bin/geoipupdate&#39;,

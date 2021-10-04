@@ -60,33 +60,32 @@
       <div id="content"><div id='filecontents'>
 <h1 id="label-geoip">geoip</h1>
 
-<p>Project state:</p>
+<h2 id="label-Project+status">Project status</h2>
 
-<p>GitHub: <a href="https://github.com/rtib/puppet-geoip/issues"><img src="https://img.shields.io/github/issues/rtib/puppet-geoip.svg"></a> <a href="https://github.com/rtib/puppet-geoip/blob/master/LICENSE"><img src="https://img.shields.io/github/license/rtib/puppet-geoip.svg"></a> <a href="https://github.com/rtib/puppet-geoip/commits/master"><img src="https://img.shields.io/github/last-commit/rtib/puppet-geoip"></a> <a href="https://github.com/rtib/puppet-geoip/releases"><img src="https://img.shields.io/github/tag/rtib/puppet-geoip.svg"></a></p>
+<p>GitHub: <a href="https://github.com/rtib/puppet-geoip/issues"><img src="https://img.shields.io/github/issues/rtib/puppet-geoip.svg"></a> <img src="https://img.shields.io/github/commit-activity/y/rtib/puppet-geoip"> <img src="https://img.shields.io/github/last-commit/rtib/puppet-geoip"></p>
 
-<p>Nightly-CI-Workflows: <a href="https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml"><img src="https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml/badge.svg?branch=main"></a> <a href="https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml"><img src="https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml/badge.svg?branch=main"></a></p>
+<p>Nightly Workflows: <a href="https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml"><img src="https://github.com/rtib/puppet-geoip/actions/workflows/ci-spec.yaml/badge.svg?branch=main"></a> <a href="https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml"><img src="https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml/badge.svg?branch=main"></a></p>
 
-<p>Puppet Forge: <a href="https://forge.puppet.com/trepasi/geoip"><img src="https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg"></a> <a href="https://forge.puppet.com/trepasi/geoip"><img src="https://img.shields.io/puppetforge/v/trepasi/geoip.svg"></a> <a href="https://forge.puppet.com/trepasi/geoip"><img src="https://img.shields.io/puppetforge/f/trepasi/geoip.svg"></a> <a href="https://forge.puppet.com/trepasi/geoip"><img src="https://img.shields.io/puppetforge/dt/trepasi/geoip.svg"></a></p>
+<p>Puppet Forge: <img src="https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg"> <a href="https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml"><img src="https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml/badge.svg"></a> <a href="https://forge.puppet.com/trepasi/geoip"><img src="https://img.shields.io/puppetforge/v/trepasi/geoip.svg"></a></p>
 
 <h2 id="label-Table+of+Contents">Table of Contents</h2>
-<!-- @import "[TOC]" depthFrom=1 depthTo=6 orderedList=false --><!-- code_chunk_output --><ul><li>
-<p><a href="#geoip">geoip</a></p>
+<!-- @import "[TOC]" depthFrom=2 depthTo=3 orderedList=false --><!-- code_chunk_output --><ul><li>
+<p><a href="#project-status">Project status</a></p>
 </li><li>
 <p><a href="#table-of-contents">Table of Contents</a></p>
 </li><li>
 <p><a href="#description">Description</a></p>
 </li><li>
 <p><a href="#setup">Setup</a></p>
-<ul><li>
+</li><li>
 <p><a href="#what-geoip-affects">What geoip affects</a></p>
 </li><li>
 <p><a href="#setup-requirements">Setup Requirements</a></p>
 </li><li>
 <p><a href="#beginning-with-geoip">Beginning with geoip</a></p>
-</li></ul>
 </li><li>
 <p><a href="#usage">Usage</a></p>
-<ul><li>
+</li><li>
 <p><a href="#configuring-versions-less-than-311">Configuring versions less than 3.1.1</a></p>
 </li><li>
 <p><a href="#configuring-versions-311-and-later">Configuring versions 3.1.1 and later</a></p>
@@ -96,9 +95,12 @@
 <p><a href="#updating-databases">Updating databases</a></p>
 </li><li>
 <p><a href="#update-scheduling">Update scheduling</a></p>
-</li></ul>
 </li><li>
 <p><a href="#reference">Reference</a></p>
+</li><li>
+<p><a href="#limitations">Limitations</a></p>
+</li><li>
+<p><a href="#debian-11-bullseye">Debian 11 - Bullseye</a></p>
 </li><li>
 <p><a href="#development">Development</a></p>
 </li><li>
@@ -107,7 +109,7 @@
 <!-- /code_chunk_output -->
 <h2 id="label-Description">Description</h2>
 
-<p>This Puppet module installs and maintains tools and processes to use GeoIP databases from MaxMind. These include the lookup tools for lookup and update the databases. It will manage the configuration for the update tool which enables to set up your subscription settings, product IDs and other settings, e.g. proxy settings. If systemd is available, a service is defined in order to enable a seamless update process.</p>
+<p>This Puppet module installs and maintains tools and processes to use GeoIP databases from <a href="https://www.maxmind.com">MaxMind</a>. These include the lookup tools for lookup and update the databases. It will manage the configuration for the update tool which enables to set up your subscription settings, product IDs and other settings, e.g. proxy settings. If systemd is available, a service is defined in order to enable a seamless update process.</p>
 
 <h2 id="label-Setup">Setup</h2>
 
@@ -123,14 +125,14 @@
 
 <p>The only thing to start with geoip is to include the class in the manifest of your nodes.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_geoip'>geoip</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_contain'>contain</span> <span class='id identifier rubyid_geoip'>geoip</span>
 </code></pre>
 
 <p>All configuration parameter can be assigned hiera. The default values are also lookuped up by hiera using the database shipped with the module.</p>
 
 <h2 id="label-Usage">Usage</h2>
 
-<p>All configuration parameter can be set using hiera. Note, that MaxMind does not allow to download databases without subscription, but there is a free tier which can be used to download three GeoLite2 databases.</p>
+<p>Note, that MaxMind does not allow to download databases without subscription, but there is a free tier which can be used to download three GeoLite2 databases.</p>
 
 <p>The configuration depends on the version of the <code>geoipupdate</code> tool to use, as there is a difference between versions starting at 3.1.1 and the older ones. The module referns to these settings via parameter <code>geoip::config_version</code> using the value <code>lt311</code> for versions less than 3.1.1 and value <code>ge311</code> for version greater or equal to 3.1.1.</p>
 
@@ -210,11 +212,27 @@
 
 <h2 id="label-Reference">Reference</h2>
 
-<p>Generated reference documentation is available at <a href="https://rtib.github.io/puppet-geoip/">rtib.github.io/puppet-geoip/</a>.</p>
+<p>Automatically generated reference documentation is available in the <a href="https://github.com/rtib/puppet-geoip/blob/main/REFERENCE.md">REFERENCE.md</a> file or at <a href="https://rtib.github.io/puppet-geoip/">rtib.github.io/puppet-geoip/</a>.</p>
+
+<h2 id="label-Limitations">Limitations</h2>
+
+<p>For supported operating systems and dependencies, see <a href="https://github.com/rtib/puppet-cassandra/blob/main/metadata.json">metadata.json</a>.</p>
+
+<p>Extensive itegration tests are run nightly to assure quality and compatibility with next releases.</p>
+
+<h3 id="label-Debian+11+-+Bullseye">Debian 11 - Bullseye</h3>
+
+<p>The <code>geoipupdate</code> package available in Debian Bullseye release is shipping SystemD units for service and timer to conduct weekly updates of the database. Default behaviour of the module will shift to use <code>systemd_config: dropin</code> on Debian-11 by default to rebuild the functionality on the changed environment.</p>
 
 <h2 id="label-Development">Development</h2>
 
-<p>According to its license, you are free to contribute changes to this module. You may aware of the general workflows when contributing to GitHub projects, if not yet, please read CONTRIBUTING.md.</p>
+<p>The module is developed using recent <a href="https://puppet.com/docs/pdk/2.x/pdk.html">Puppet Development Kit</a>, <a href="https://puppet.com/docs/pdk/1.x/pdk_testing.html">validated</a> and extensively tested using <a href="https://github.com/puppetlabs/puppet_litmus">Puppet Litmus</a>. Automated workflows, implemented with <a href="https://docs.github.com/en/actions">GitHub Actions</a> are run on demand and nightly, doing validation, spec tests and continuous integration tests.</p>
+
+<p>Note, that <a href="https://github.com/rtib/puppet-geoip/actions/workflows/ci-acceptance.yaml">CI-Acceptance</a> workflow is not applied to pull requests automatically, as it needs credentials setup as secrets to work. A pull request, however, will only be merged if these tests also succeed.</p>
+
+<p>As an open project, you are welcome to contribute to this module. Currently, there is no contribution guide specific to this module, general information about the workflow may apply. In case of questions feel free to open a issue or join community Slack channels #forge-modules, #puppet, #puppet-dev, #testing on slack.puppet.com.</p>
+
+<p>Issues and pull requests will be addressed in a timely manner, according to community best practice. Releases are going to be published on demand, after having merged an set of sufficiently important changes and all tests succeeded. There may be automated rule enforcement in place to provide a healthy issue lifecycle.</p>
 
 <h2 id="label-Copyright">Copyright</h2>
 
