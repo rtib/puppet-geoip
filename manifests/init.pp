@@ -29,6 +29,7 @@
 # @param config_version the config version to use for geoipupdate
 # @param config hash of configuration options
 # @param manage_service whether to manage database updating service
+# @param systemd_config type of configuration how changes are applied to systemd
 # @param service_user effective user the update service should run
 # @param service_group effective group the update service should run
 # @param update_path path to the geoipupdate tool, used by update service
@@ -44,6 +45,7 @@ class geoip (
   Enum['lt311','ge311']     $config_version = 'lt311',
   Hash                      $config = {},
   Boolean                   $manage_service = true,
+  Enum['unit', 'dropin']    $systemd_config = 'unit',
   String                    $service_user = 'root',
   String                    $service_group = 'root',
   Stdlib::Absolutepath      $update_path = '/usr/bin/geoipupdate',

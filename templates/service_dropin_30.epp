@@ -1,0 +1,7 @@
+# Managed by puppet module geoip.
+# Do not edit!
+
+[Service]
+Type=exec
+Restart=<%= $geoip::systemd::service::restart %>
+RestartSec=<%= $geoip::systemd::service::restart_sec %>

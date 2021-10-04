@@ -1,0 +1,7 @@
+# Managed by puppet module geoip.
+# Do not edit!
+
+[Timer]
+<% $geoip::update_timers.each |String $value| { -%>
+OnCalendar=<%= $value %>
+<% } -%>

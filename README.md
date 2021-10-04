@@ -29,6 +29,7 @@ Puppet Forge: ![PDK Version](https://img.shields.io/puppetforge/pdk-version/trep
   - [Update scheduling](#update-scheduling)
 - [Reference](#reference)
 - [Limitations](#limitations)
+  - [Debian 11 - Bullseye](#debian-11-bullseye)
 - [Development](#development)
 - [Copyright](#copyright)
 
@@ -134,7 +135,6 @@ Updates, if handled by SystemD, can be scheduled by setting `geoip::update_timer
 
 The parameter `geoip::update_scatter` defines the seconds for systemd timer AccuracySec option (see [systemd.timer(5)#AccuracySec](https://www.freedesktop.org/software/systemd/man/systemd.timer.html#AccuracySec=)) to prevent multiple nodes to update at the same time.
 
-
 ## Reference
 
 Automatically generated reference documentation is available in the [REFERENCE.md][2] file or at [https://rtib.github.io/puppet-geoip/][3].
@@ -144,6 +144,10 @@ Automatically generated reference documentation is available in the [REFERENCE.m
 For supported operating systems and dependencies, see [metadata.json](https://github.com/rtib/puppet-cassandra/blob/main/metadata.json).
 
 Extensive itegration tests are run nightly to assure quality  and compatibility with next releases.
+
+### Debian 11 - Bullseye
+
+The `geoipupdate` package available in Debian Bullseye release is shipping SystemD units for service and timer to conduct weekly updates of the database. Default behaviour of the module will shift to use `systemd_config: dropin` on Debian-11 by default to rebuild the functionality on the changed environment.
 
 ## Development
 
