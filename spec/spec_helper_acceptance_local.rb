@@ -13,11 +13,19 @@ if node_facts['platform'].include?('debian')
 end
 
 def config_ge311?
-  node_facts = facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST']) || {}
-  case node_facts['platform']
+  case facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST'])['platform']
   when %r{debian:1[01]}, %r{ubuntu:20\.04}
     true
   else
     false
+  end
+end
+
+def service_name
+  case facts_from_node(inventory_hash_from_inventory_file, ENV['TARGET_HOST'])['platform']
+  when %r{debian:11}
+    'geoipupdate'
+  else
+    'geoip_update'
   end
 end
