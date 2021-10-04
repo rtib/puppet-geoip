@@ -6,8 +6,8 @@
 # @param restart update service retry behaviour
 # @param restart_sec time to wait before retry
 class geoip::systemd::service (
-  String                 $restart = 'on-failure',
-  String                 $restart_sec = '5min',
+  String $restart = 'on-failure',
+  String $restart_sec = '5min',
 ) {
   if $geoip::systemd_config == 'unit' {
     systemd::unit_file{ "${geoip::service_name}.service":

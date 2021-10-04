@@ -3,6 +3,8 @@
 # This class will create a SystemD timer unit triggering the update service on
 # each wallclock timer.
 #
+# @param overwrite_wallclocks if systemd_config is set to dropin, the existing timer may already have wallclocks, this aboud to overwrite or append them
+#
 class geoip::systemd::timer(
   Boolean $overwrite_wallclocks = true,
 ) {
