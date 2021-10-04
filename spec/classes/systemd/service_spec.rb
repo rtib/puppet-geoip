@@ -10,7 +10,10 @@ describe 'geoip' do
 
         context 'default config' do
           let(:params) do
-            default_config(os)
+            default_config(os).merge({
+                                       systemd_config: 'unit',
+              service_name: 'geoip_update'
+                                     })
           end
 
           it { is_expected.to compile }
@@ -74,10 +77,12 @@ describe 'geoip' do
 
         context 'alternate user/group config' do
           let(:params) do
-            default_config(os).merge(
-              'service_user'  => 'geo_user',
-              'service_group' => 'geo_group',
-            )
+            default_config(os).merge({
+                                       service_user: 'geo_user',
+              service_group: 'geo_group',
+              systemd_config: 'unit',
+              service_name: 'geoip_update'
+                                     })
           end
 
           it { is_expected.to compile }

@@ -1,0 +1,8 @@
+# Managed by puppet module geoip.
+# Do not edit!
+
+[Service]
+User=<%= $geoip::service_user %>
+Group=<%= $geoip::service_group %>
+StandardOutput=journal
+StandardError=journal
