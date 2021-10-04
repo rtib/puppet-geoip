@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.1.0](https://github.com/rtib/puppet-geoip/tree/v4.1.0) (2021-10-04)
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v4.0.1...v4.1.0)
+
+### Added
+
+- Incur systemd units on Debian-11 [\#42](https://github.com/rtib/puppet-geoip/pull/42) ([rtib](https://github.com/rtib))
+
+### Fixed
+
+- fix acceptance test [\#43](https://github.com/rtib/puppet-geoip/pull/43) ([rtib](https://github.com/rtib))
+- \[MODULES-11118\] enforce template conformance to meet requirements [\#40](https://github.com/rtib/puppet-geoip/pull/40) ([rtib](https://github.com/rtib))
+
 ## [v4.0.1](https://github.com/rtib/puppet-geoip/tree/v4.0.1) (2021-09-10)
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v4.0.0...v4.0.1)

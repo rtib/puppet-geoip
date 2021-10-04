@@ -59,6 +59,7 @@ The following parameters are available in the `geoip` class:
 * [`config_version`](#config_version)
 * [`config`](#config)
 * [`manage_service`](#manage_service)
+* [`systemd_config`](#systemd_config)
 * [`service_user`](#service_user)
 * [`service_group`](#service_group)
 * [`update_path`](#update_path)
@@ -121,6 +122,14 @@ Data type: `Boolean`
 whether to manage database updating service
 
 Default value: ``true``
+
+##### <a name="systemd_config"></a>`systemd_config`
+
+Data type: `Enum['unit', 'dropin']`
+
+type of configuration how changes are applied to systemd
+
+Default value: `'unit'`
 
 ##### <a name="service_user"></a>`service_user`
 
@@ -397,4 +406,18 @@ Default value: `'5min'`
 
 This class will create a SystemD timer unit triggering the update service on
 each wallclock timer.
+
+#### Parameters
+
+The following parameters are available in the `geoip::systemd::timer` class:
+
+* [`overwrite_wallclocks`](#overwrite_wallclocks)
+
+##### <a name="overwrite_wallclocks"></a>`overwrite_wallclocks`
+
+Data type: `Boolean`
+
+if systemd_config is set to dropin, the existing timer may already have wallclocks, this aboud to overwrite or append them
+
+Default value: ``true``
 
