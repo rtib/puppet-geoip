@@ -10,11 +10,6 @@ Rakefile:
         t.build = false
         t.tag_message_pattern = "Release v%s"
       end
-Gemfile:
-  optional:
-    ':development':
-      - gem: 'github_changelog_generator'
-        version: '~> 1.15'
 appveyor.yml:
   delete: true
 .gitlab-ci.yml:
