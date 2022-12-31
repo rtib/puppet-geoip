@@ -8,7 +8,7 @@ class geoip::install {
     default   => $geoip::ensure,
   }
 
-  package{ $geoip::packages:
+  package { $geoip::packages:
     ensure => $pkg_ensure,
   }
 }

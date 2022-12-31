@@ -10,7 +10,7 @@
 # @param proxy_user_password Credentials as username:password for proxy authentication
 # @param preserve_file_times Whether to preserve modification times of files downloaded from the server
 # @param lock_file The lock file to use
-class geoip::config::ge311(
+class geoip::config::ge311 (
   String $accountid,
   String $licensekey,
   Array[String] $editionids = ['GeoLite2-ASN','GeoLite2-City','GeoLite2-Country'],
@@ -26,7 +26,7 @@ class geoip::config::ge311(
     default   => $geoip::ensure,
   }
 
-  file{ $geoip::config_path:
+  file { $geoip::config_path:
     ensure  => $cfg_ensure,
     content => epp('geoip/GeoIP.conf.ge311.epp'),
     mode    => '0640',

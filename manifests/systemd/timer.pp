@@ -5,12 +5,12 @@
 #
 # @param overwrite_wallclocks if systemd_config is set to dropin, the existing timer may already have wallclocks, this aboud to overwrite or append them
 #
-class geoip::systemd::timer(
+class geoip::systemd::timer (
   Boolean $overwrite_wallclocks = true,
 ) {
   if $geoip::systemd_config == 'unit' {
     if $geoip::update_timers.length > 0 {
-      systemd::unit_file{ "${geoip::service_name}.timer":
+      systemd::unit_file { "${geoip::service_name}.timer":
         ensure  => $geoip::ensure,
         content => epp('geoip/timer_unit.epp'),
       }
