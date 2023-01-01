@@ -20,7 +20,7 @@ jobs:
       acceptance_matrix: ${{ steps.get-matrix.outputs.matrix }}
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Activate Ruby
         uses: ruby/setup-ruby@v1
@@ -40,7 +40,7 @@ jobs:
       matrix: ${{ fromJson(needs.setup_matrix.outputs.acceptance_matrix) }}
     name: Litmus tests for ${{ matrix.platforms.label }} with ${{ matrix.collection }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: setup ruby
         uses: ruby/setup-ruby@v1
