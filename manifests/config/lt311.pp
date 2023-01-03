@@ -10,7 +10,7 @@
 # @param proxy_user_password Credentials as username:password for proxy authentication
 # @param skip_hostname_verification Whether to skip host name verification on HTTPS connections
 # @param skip_peer_verification Whether to skip peer verification on HTTPS connections
-class geoip::config::lt311(
+class geoip::config::lt311 (
   String $userid,
   String $licensekey,
   Array[String] $productids = ['GeoLite2-ASN','GeoLite2-City','GeoLite2-Country'],
@@ -26,7 +26,7 @@ class geoip::config::lt311(
     default   => $geoip::ensure,
   }
 
-  file{ $geoip::config_path:
+  file { $geoip::config_path:
     ensure  => $cfg_ensure,
     content => epp('geoip/GeoIP.conf.lt311.epp'),
     mode    => '0640',

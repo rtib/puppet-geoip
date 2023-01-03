@@ -10,7 +10,7 @@ class geoip::systemd::service (
   String $restart_sec = '5min',
 ) {
   if $geoip::systemd_config == 'unit' {
-    systemd::unit_file{ "${geoip::service_name}.service":
+    systemd::unit_file { "${geoip::service_name}.service":
       ensure  => $geoip::ensure,
       content => epp('geoip/service_unit.epp'),
     }

@@ -22,7 +22,7 @@ jobs:
       acceptance_matrix: ${{ steps.get-matrix.outputs.matrix }}
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Activate Ruby
         uses: ruby/setup-ruby@v1
@@ -44,7 +44,7 @@ jobs:
       PUPPET_GEM_VERSION: "${{ matrix.puppet_version }}"
     name: Spec tests for Puppet ${{ matrix.puppet_version }} on Ruby ${{ matrix.ruby_version }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: setup ruby
         uses: ruby/setup-ruby@v1
