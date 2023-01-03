@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip::systemd::service
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.28
   
 </title>
 
@@ -170,7 +170,7 @@ class geoip::systemd::service (
   String $restart_sec = &#39;5min&#39;,
 ) {
   if $geoip::systemd_config == &#39;unit&#39; {
-    systemd::unit_file{ &quot;${geoip::service_name}.service&quot;:
+    systemd::unit_file { &quot;${geoip::service_name}.service&quot;:
       ensure  =&gt; $geoip::ensure,
       content =&gt; epp(&#39;geoip/service_unit.epp&#39;),
     }

@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip::systemd::timer
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.28
   
 </title>
 
@@ -159,12 +159,12 @@
       <td>
         <pre class="code"><span class="info file"># File 'manifests/systemd/timer.pp', line 8</span>
 
-class geoip::systemd::timer(
+class geoip::systemd::timer (
   Boolean $overwrite_wallclocks = true,
 ) {
   if $geoip::systemd_config == &#39;unit&#39; {
     if $geoip::update_timers.length &gt; 0 {
-      systemd::unit_file{ &quot;${geoip::service_name}.timer&quot;:
+      systemd::unit_file { &quot;${geoip::service_name}.timer&quot;:
         ensure  =&gt; $geoip::ensure,
         content =&gt; epp(&#39;geoip/timer_unit.epp&#39;),
       }

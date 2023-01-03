@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip::install
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.28
   
 </title>
 
@@ -114,7 +114,7 @@ class geoip::install {
     default   =&gt; $geoip::ensure,
   }
 
-  package{ $geoip::packages:
+  package { $geoip::packages:
     ensure =&gt; $pkg_ensure,
   }
 }</pre>

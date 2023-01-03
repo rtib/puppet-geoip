@@ -6,7 +6,7 @@
 <title>
   Puppet Class: geoip::config::lt311
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.28
   
 </title>
 
@@ -282,7 +282,7 @@
       <td>
         <pre class="code"><span class="info file"># File 'manifests/config/lt311.pp', line 13</span>
 
-class geoip::config::lt311(
+class geoip::config::lt311 (
   String $userid,
   String $licensekey,
   Array[String] $productids = [&#39;GeoLite2-ASN&#39;,&#39;GeoLite2-City&#39;,&#39;GeoLite2-Country&#39;],
@@ -298,7 +298,7 @@ class geoip::config::lt311(
     default   =&gt; $geoip::ensure,
   }
 
-  file{ $geoip::config_path:
+  file { $geoip::config_path:
     ensure  =&gt; $cfg_ensure,
     content =&gt; epp(&#39;geoip/GeoIP.conf.lt311.epp&#39;),
     mode    =&gt; &#39;0640&#39;,
