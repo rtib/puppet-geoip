@@ -87,8 +87,3 @@ EOM
   end
 end
 
-Blacksmith::RakeTask.new do |t|
-  t.build = false
-  t.tag_message_pattern = "Release v%s"
-end
-
