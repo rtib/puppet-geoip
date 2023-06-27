@@ -31,7 +31,9 @@ jobs:
           bundler-cache: true
 
       - name: Bundler environment
-        run: bundle env
+        run: |
+          bundle config set --local without 'release'
+          bundle env
 
       - name: Get matrix
         id: get-matrix
