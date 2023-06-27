@@ -32,13 +32,11 @@ jobs:
 
       - name: Prepare environment
         run: |
-          bundle config set --local with 'system_tests'
+          bundle config set --local without 'release'
           bundle install
 
       - name: Bundler environment
-        run: |
-          bundle config set --local without 'release'
-          bundle env
+        run: bundle env
 
       - name: Get matrix
         id: get-matrix
