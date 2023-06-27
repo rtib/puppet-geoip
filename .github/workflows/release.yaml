@@ -19,7 +19,7 @@ jobs:
 
       - name: Prepare environment
         run: |
-          bundle config set --local without 'system_tests'
+          bundle config set --local only 'release'
           bundle install
           git config --global user.name "${{ github.workflow }} #${{ github.run_number }}"
           git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
