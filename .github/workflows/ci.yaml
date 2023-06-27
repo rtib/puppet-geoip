@@ -28,7 +28,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Prepare environment
+        run: |
+          bundle config set --local with 'system_tests'
+          bundle install
 
       - name: Bundler environment
         run: |
