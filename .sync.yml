@@ -16,3 +16,8 @@ appveyor.yml:
   delete: true
 .travis.yml:
   delete: true
+Gemfile:
+  optional:
+    ':development':
+      - gem: 'github_changelog_generator'
+        version: '>= 1.16.1'

@@ -29,11 +29,10 @@ jobs:
           bundle exec rake strings:gh_pages:update
           bundle exec rake strings:generate:reference
 
-## changelog generator seems broken with Ruby 2.7
-      # - name: Update Changelog.md
-      #   run: bundle exec rake changelog
-      #   env:
-      #     CHANGELOG_GITHUB_TOKEN: ${{ github.token }}
+      - name: Update Changelog.md
+        run: bundle exec rake changelog
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ github.token }}
 
       - name: Check for changes
         id: changes
