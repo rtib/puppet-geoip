@@ -18,7 +18,5 @@ appveyor.yml:
   delete: true
 Gemfile:
   optional:
-    ':release':
+    ':development':
       - gem: 'puppet-blacksmith'
-      - gem: 'github_changelog_generator'
-        version: '>= 1.16.1'
