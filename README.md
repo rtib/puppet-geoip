@@ -4,9 +4,9 @@
 
 GitHub: [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-geoip.svg)](https://github.com/rtib/puppet-geoip/issues) ![GitHub tag](https://img.shields.io/github/commit-activity/y/rtib/puppet-geoip) ![GitHub](https://img.shields.io/github/last-commit/rtib/puppet-geoip)
 
-Nightly CI Workflow: [[![CI](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml)
+Nightly CI Workflow: [![CI](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/ci.yaml)
 
-Puppet Forge: ![PDK Version](https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg) [![release](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml/badge.svg)](https://github.com/rtib/puppet-geoip/actions/workflows/release.yaml) [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
+Puppet Forge: ![PDK Version](https://img.shields.io/puppetforge/pdk-version/trepasi/geoip.svg) [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/geoip.svg)](https://forge.puppet.com/trepasi/geoip)
 
 ## Table of Contents
 
