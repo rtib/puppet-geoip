@@ -3,13 +3,13 @@ mock_with: ':rspec'
 use_litmus: true
 changelog_user: rtib
 changelog_project: puppet-geoip
-# Rakefile:
-#   extras:
-#     - |
-#       Blacksmith::RakeTask.new do |t|
-#         t.build = false
-#         t.tag_message_pattern = "Release v%s"
-#       end
+Rakefile:
+  extras:
+    - |
+      Blacksmith::RakeTask.new do |t|
+        t.build = false
+        t.tag_message_pattern = "Release v%s"
+      end
 appveyor.yml:
   delete: true
 .gitlab-ci.yml:
@@ -19,6 +19,5 @@ appveyor.yml:
 Gemfile:
   optional:
     ':release':
-      - gem: 'puppet-blacksmith'
-      - gem: 'github_changelog_generator'
-        version: '>= 1.16.1'
+      - gem: puppet-blacksmith
+      - gem: github_changelog_generator
