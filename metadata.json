@@ -28,7 +28,8 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "10",
-        "11"
+        "11",
+        "12"
       ]
     },
     {
@@ -43,7 +44,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=6.21.0 < 8.0.0"
+      "version_requirement": ">=6.21.0 < 9.0.0"
     }
   ],
   "tags": [

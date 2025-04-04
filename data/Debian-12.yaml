@@ -1,0 +1,4 @@
+---
+geoip::config_version: ge311
+geoip::service_name: geoipupdate
+geoip::systemd_config: dropin
