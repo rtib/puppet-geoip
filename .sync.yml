@@ -16,8 +16,3 @@ appveyor.yml:
   delete: true
 .travis.yml:
   delete: true
-Gemfile:
-  optional:
-    ':release':
-      - gem: puppet-blacksmith
-      - gem: github_changelog_generator
