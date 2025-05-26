@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.1.1](https://github.com/rtib/puppet-geoip/tree/v6.1.1) - 2025-05-26
+
+[Full Changelog](https://github.com/rtib/puppet-geoip/compare/v6.1.0...v6.1.1)
+
+### Other
+
+- Allow puppet/systemd 8.x [#57](https://github.com/rtib/puppet-geoip/pull/57) ([smortex](https://github.com/smortex))
+
 ## [v6.1.0](https://github.com/rtib/puppet-geoip/tree/v6.1.0) - 2025-04-04
 
 [Full Changelog](https://github.com/rtib/puppet-geoip/compare/v6.0.1...v6.1.0)
